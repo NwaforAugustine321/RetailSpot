@@ -1,0 +1,25 @@
+.Mobile-span-icon{
+  margin-bottom: 0.4rem;
+  @media (max-width:350px){
+    width:15px
+  }
+}
+
+.active{
+  background-color: #E3562A;
+  color:#FFFF;
+  
+}
+
+.view{
+  right: 0px !important;
+  transition: right 0.5s;
+}
+
+.isopen{
+  @media (max-width:1024px){
+    display: none !important;
+  }
+
+  
+}
