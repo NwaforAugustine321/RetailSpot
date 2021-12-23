@@ -88,7 +88,6 @@ const View = styled.div`
 const Text = styled.span`
 	display: block;
 	font-size: 0.7rem;
-	color: var(--pri-color);
 	@media (min-width: 350px) {
 		font-size: 0.9rem;
 	}
@@ -119,25 +118,25 @@ export default function DashboardSideBar() {
 		<SideBar>
 			<MobileView>
 				<View>
-					<Setting fill='black' className='Mobile-span-icon' />
+					<Setting fill='#E3562A' className='Mobile-span-icon' />
 					<Text>Settings</Text>
 				</View>
 				<View>
-					<SpotIcon className='Mobile-span-icon' />
+					<SpotIcon className='Mobile-span-icon' fill='#E3562A' />
 					<Text>Stores</Text>
 				</View>
 				<View>
-					<OverViewIcon fill='black' className='Mobile-span-icon' />
+					<OverViewIcon fill='#E3562A' className='Mobile-span-icon' />
 					<Text>Overview</Text>
 				</View>
 
 				<View>
-					<Report className='Mobile-span-icon' />
+					<Report className='Mobile-span-icon' fill='#E3562A' />
 					<Text> Reports</Text>
 				</View>
 
 				<View>
-					<StoreIcon fill='black' className='Mobile-span-icon' />
+					<StoreIcon fill='#E3562A' className='Mobile-span-icon' />
 					<Text>Spots</Text>
 				</View>
 			</MobileView>
@@ -155,7 +154,7 @@ export default function DashboardSideBar() {
 						}}
 					>
 						<OverViewIcon fill={tab === 1 ? '#FFFF' : '#4F4F4F'} />
-						Overview
+						<a href='/account/login'> Overview</a>
 					</StyledListItem>
 					<StyledListItem
 						className={tab === 2 ? 'active' : ''}
@@ -164,7 +163,8 @@ export default function DashboardSideBar() {
 						}}
 					>
 						<UserIcon fill={tab === 2 ? '#FFFF' : '#4F4F4F'} />
-						Users
+
+						<a href='/account/login'>Users</a>
 					</StyledListItem>
 					<StyledListItem
 						className={tab === 3 ? 'active' : ''}

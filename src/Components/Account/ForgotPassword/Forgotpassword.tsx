@@ -86,11 +86,17 @@ const Wrapper = styled.div`
 	}
 `;
 
+const StyledContainer = styled(Container)`
+	width: '608';
+	margin: '5 auto 10rem auto';
+	boarder: '0';
+`;
+
 export default function Login() {
 	return (
 		<>
 			<Header />
-			<Container width='608' margin='5rem auto 10rem auto' boarder='0'>
+			<StyledContainer>
 				<TextWrapper>
 					<a href='/'>
 						<BackIcon />
@@ -115,7 +121,7 @@ export default function Login() {
 					/>
 					<Button text='Reset' margin='0rem auto 4rem auto' />
 				</Wrapper>
-			</Container>
+			</StyledContainer>
 		</>
 	);
 }

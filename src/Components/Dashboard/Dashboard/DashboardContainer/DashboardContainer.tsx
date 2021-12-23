@@ -14,10 +14,9 @@ const Grid = styled.div`
 		grid-template-columns: 209px 1fr;
 		grid-template-areas:
 			'sidebar content'
-			'sidebar body'
 			'sidebar body';
+			'body body';
 	}
-	background: #f9f9f9;
 `;
 
 const Content = styled.div`

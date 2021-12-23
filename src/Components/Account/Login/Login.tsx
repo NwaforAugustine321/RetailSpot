@@ -25,6 +25,12 @@ const CustomeInput = styled(Input)`
 	}
 `;
 
+const StyledContainer = styled(Container)`
+	width: '600';
+	margin: '5 auto 10rem auto';
+	boarder: '0';
+`;
+
 const Label = styled.label`
 	display: block;
 	margin-bottom: 0.5rem;
@@ -80,7 +86,7 @@ export default function Login() {
 	return (
 		<>
 			<Header />
-			<Container width='600' margin='5rem auto 10rem auto' boarder='0'>
+			<StyledContainer>
 				<Title>Sign In</Title>
 				<Wrapper>
 					<Label>Email:</Label>
@@ -102,7 +108,7 @@ export default function Login() {
 
 					<Button text='Sign in' margin='0rem auto 4rem auto' />
 				</Wrapper>
-			</Container>
+			</StyledContainer>
 		</>
 	);
 }

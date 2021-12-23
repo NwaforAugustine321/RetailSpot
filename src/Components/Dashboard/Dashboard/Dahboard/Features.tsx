@@ -47,8 +47,10 @@ const StyledValue = styled.h1`
 	font-style: normal;
 	font-weight: 600;
 	font-size: 2.25rem;
-	line-height: 54px;
 	color: var(--bg-color);
+	@media (max-width: 1380px) {
+		font-size: 1.5rem;
+	}
 `;
 
 const StyledTitle = styled.p`
@@ -56,8 +58,10 @@ const StyledTitle = styled.p`
 	font-style: normal;
 	font-weight: 500;
 	font-size: 1.23rem;
-	line-height: 54px;
 	color: var(--bg-color);
+	@media (max-width: 1380px) {
+		font-size: 0.8rem;
+	}
 `;
 
 const StyledContainer = styled(Container)`
@@ -66,6 +70,10 @@ const StyledContainer = styled(Container)`
 	align-items: center;
 	padding: 2.4rem;
 	justify-content: space-between;
+	@media (max-width: 1200px) {
+		padding: 1rem;
+		height: 120px;
+	}
 `;
 
 const settings = {

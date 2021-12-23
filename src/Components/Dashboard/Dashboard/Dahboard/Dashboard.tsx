@@ -6,10 +6,12 @@ import DashboardContainer from '../DashboardContainer/DashboardContainer';
 import Container from '../../../../Template/Container/Container';
 import Features from './Features';
 import Activities from '../Dahboard/Activities/Activities';
+import RecentView from './RecentView/RecentView';
 
 const Grid = styled.div`
 	display: grid;
 	padding: 1rem;
+	grid-template-columns: 1fr;
 	grid-template-areas:
 		'top'
 		'main'
@@ -17,7 +19,7 @@ const Grid = styled.div`
 		'footer';
 	gap: 2rem;
 	@media (min-width: 1024px) {
-		grid-template-columns: 1fr 282px;
+		grid-template-columns: auto 282px;
 		grid-template-areas:
 			'top top'
 			'main side'
@@ -31,7 +33,6 @@ const GridTop = styled.div`
 
 const GridMain = styled.div`
 	grid-area: main;
-	height: 604px;
 	background: #f3f3f3;
 	border-radius: 5px;
 `;
@@ -154,7 +155,9 @@ export default function Dashboard() {
 						</GraphBarInnerContainer>
 					</GraphBar>
 				</GridSide>
-				<GridFooter></GridFooter>
+				<GridFooter>
+					<RecentView />
+				</GridFooter>
 			</Grid>
 		</DashboardContainer>
 	);
