@@ -15,7 +15,6 @@ const Grid = styled.div`
 		grid-template-areas:
 			'sidebar content'
 			'sidebar body';
-			'body body';
 	}
 `;
 

@@ -66,7 +66,8 @@ const customer = [
 const RecentViewContainer = styled.div`
 	display: flex;
 	list-style: none;
-	gap: 1.5rem;
+	max-width: 1200px;
+	gap: 2rem;
 	justify-content: space-between;
 	@media (max-width: 640px) {
 		flex-direction: column;

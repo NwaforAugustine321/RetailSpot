@@ -18,6 +18,7 @@ const SideBar = styled(Container)`
 	margin: 0px;
 	height: 100%;
 	min-height: 100px;
+	background: none;
 	max-width: 100%;
 	grid-area: sidebar;
 	border-radius: 0px;
@@ -30,6 +31,7 @@ const SideBar = styled(Container)`
 		left: 0;
 		align-items: center;
 		padding: 0rem 1rem;
+		background: var(--bg-color);
 	}
 `;
 
@@ -44,9 +46,10 @@ const StyledList = styled.ul`
 	list-style: none;
 	display: flex;
 	height: 100%;
+	background: var(--bg-color);
 	padding: 2rem 0rem;
 	justify-content: space-between;
-	max-height: 900px;
+	max-height: 1050px;
 	flex-direction: column;
 `;
 
@@ -88,6 +91,7 @@ const View = styled.div`
 const Text = styled.span`
 	display: block;
 	font-size: 0.7rem;
+	cursor: pointer;
 	@media (min-width: 350px) {
 		font-size: 0.9rem;
 	}
@@ -96,9 +100,9 @@ const Text = styled.span`
 const MenuContainer = styled.div`
 	display: flex;
 	justify-content: space-between;
-	margin-bottom: 1rem;
 	align-item: center;
-	padding: 1rem 0rem;
+	padding: 1rem 0rem 2rem 0rem;
+	background: var(--bg-color);
 `;
 
 const StyledMenuOutlined = styled(MenuOutlined)`
@@ -126,8 +130,13 @@ export default function DashboardSideBar() {
 					<Text>Stores</Text>
 				</View>
 				<View>
-					<OverViewIcon fill='#E3562A' className='Mobile-span-icon' />
-					<Text>Overview</Text>
+					<a href='/'>
+						<OverViewIcon fill='#E3562A' className='Mobile-span-icon' />
+					</a>
+
+					<Text>
+						<a href='/'> Overview</a>
+					</Text>
 				</View>
 
 				<View>
@@ -154,7 +163,7 @@ export default function DashboardSideBar() {
 						}}
 					>
 						<OverViewIcon fill={tab === 1 ? '#FFFF' : '#4F4F4F'} />
-						<a href='/account/login'> Overview</a>
+						<a href='/'> Overview</a>
 					</StyledListItem>
 					<StyledListItem
 						className={tab === 2 ? 'active' : ''}
@@ -164,7 +173,7 @@ export default function DashboardSideBar() {
 					>
 						<UserIcon fill={tab === 2 ? '#FFFF' : '#4F4F4F'} />
 
-						<a href='/account/login'>Users</a>
+						<a href='/account/users'>Users</a>
 					</StyledListItem>
 					<StyledListItem
 						className={tab === 3 ? 'active' : ''}

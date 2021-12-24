@@ -5,14 +5,14 @@ const Container = styled.div`
 	width: 100%;
 	height: 94px;
 	margin: 0rem auto;
-	text-align: left;
+	text-align: right;
 	background: var(--bg-color);
 	border-radius: 5px;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
 	@media (max-width: 640px) {
-		max-width: 300px;
+		max-width: 350px;
 	}
 	@media (min-width: 1100px) {
 		max-width: 180px;

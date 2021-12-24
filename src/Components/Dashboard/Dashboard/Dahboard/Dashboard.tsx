@@ -10,7 +10,7 @@ import RecentView from './RecentView/RecentView';
 
 const Grid = styled.div`
 	display: grid;
-	padding: 1rem;
+	padding: 1rem 2rem;
 	grid-template-columns: 1fr;
 	grid-template-areas:
 		'top'
@@ -43,6 +43,9 @@ const GridSide = styled.div`
 	background: #f2f9eb;
 	border-radius: 5px;
 	padding: 1.3rem 0.5rem 1.3rem 1rem;
+	@media (max-width: 1024px) {
+		padding: 1.3rem 0.5rem 1.3rem 0.5rem;
+	}
 `;
 
 const GridFooter = styled.div`

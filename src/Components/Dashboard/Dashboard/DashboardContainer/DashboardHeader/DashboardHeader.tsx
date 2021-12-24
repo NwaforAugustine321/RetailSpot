@@ -241,7 +241,7 @@ export default function DashboardHeader({ className }: any) {
 						}}
 					>
 						<UserIcon fill={tab === 1 ? '#FFFF' : '#4F4F4F'} />
-						Users
+						<a href='/account/users'>Users</a>
 					</StyledListItem>
 					<StyledListItem
 						className={tab === 2 ? 'active' : ''}

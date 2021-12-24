@@ -7,6 +7,7 @@ interface IuseButton {
 	padding?: string;
 	margin?: string;
 	text: string;
+	onClick?: () => void;
 }
 
 const CustomButton = styled.button<IuseButton>`
