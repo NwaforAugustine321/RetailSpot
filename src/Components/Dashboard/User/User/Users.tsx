@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
-import DashboardContainer from '../Dashboard/DashboardContainer/DashboardContainer';
+import DashboardContainer from '../../Dashboard/DashboardContainer/DashboardContainer';
 import Card from './card';
-import PiginationButton from '../../Partial/NextButton';
-import Button from '../../../Template/Button/Button';
+import PiginationButton from '../../../Partial/NextButton';
+import Button from '../../../../Template/Button/Button';
 
 const customer = [
 	{
@@ -273,12 +273,15 @@ export default function Users() {
 						<StyledListItem>Store Owners</StyledListItem>
 						<StyledListItem className='user-active'>Customers</StyledListItem>
 						<StyledListItem>Staff</StyledListItem>
-						<StyledListItem>Add New</StyledListItem>
+						<StyledListItem>
+							<a href='/user/create'>Add New</a>
+						</StyledListItem>
 					</StyledList>
 
 					{customer.map((item, index) => {
 						return <Card data={item} key={index} />;
 					})}
+					<PiginationButton adjust={1300} />
 				</GridMain>
 				<GridSide>
 					<InnerContainer>
@@ -304,9 +307,7 @@ export default function Users() {
 						</Wrapper>
 					</InnerContainer>
 				</GridSide>
-				<GridFooter>
-					<PiginationButton adjust={1300} />
-				</GridFooter>
+				<GridFooter></GridFooter>
 			</Grid>
 		</DashboardContainer>
 	);

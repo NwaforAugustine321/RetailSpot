@@ -181,8 +181,9 @@ export default function DashboardSideBar() {
 							handleview(3);
 						}}
 					>
-						<StoreIcon fill={tab === 3 ? '#FFFF' : '#4F4F4F'} />
-						Bookings
+						<UserIcon fill={tab === 3 ? '#FFFF' : '#4F4F4F'} />
+
+						<a href='/user/store'>Store</a>
 					</StyledListItem>
 					<StyledListItem
 						className={tab === 4 ? 'active' : ''}
@@ -191,7 +192,7 @@ export default function DashboardSideBar() {
 						}}
 					>
 						<StoreIcon fill={tab === 4 ? '#FFFF' : '#4F4F4F'} />
-						Deliveries
+						Bookings
 					</StyledListItem>
 					<StyledListItem
 						className={tab === 5 ? 'active' : ''}
@@ -199,8 +200,8 @@ export default function DashboardSideBar() {
 							handleview(5);
 						}}
 					>
-						<TransactionIcon fill={tab === 5 ? '#FFFF' : '#4F4F4F'} />
-						Transactions
+						<StoreIcon fill={tab === 5 ? '#FFFF' : '#4F4F4F'} />
+						Deliveries
 					</StyledListItem>
 					<StyledListItem
 						className={tab === 6 ? 'active' : ''}
@@ -208,8 +209,8 @@ export default function DashboardSideBar() {
 							handleview(6);
 						}}
 					>
-						<PaymentIcon fill={tab === 6 ? '#FFFF' : '#4F4F4F'} />
-						Payments
+						<TransactionIcon fill={tab === 6 ? '#FFFF' : '#4F4F4F'} />
+						Transactions
 					</StyledListItem>
 					<StyledListItem
 						className={tab === 7 ? 'active' : ''}
@@ -217,8 +218,8 @@ export default function DashboardSideBar() {
 							handleview(7);
 						}}
 					>
-						<UserIcon fill={tab === 7 ? '#FFFF' : '#4F4F4F'} />
-						Coupons
+						<PaymentIcon fill={tab === 7 ? '#FFFF' : '#4F4F4F'} />
+						Payments
 					</StyledListItem>
 					<StyledListItem
 						className={tab === 8 ? 'active' : ''}
@@ -227,7 +228,7 @@ export default function DashboardSideBar() {
 						}}
 					>
 						<UserIcon fill={tab === 8 ? '#FFFF' : '#4F4F4F'} />
-						Reviews
+						Coupons
 					</StyledListItem>
 					<StyledListItem
 						className={tab === 9 ? 'active' : ''}
@@ -235,8 +236,8 @@ export default function DashboardSideBar() {
 							handleview(9);
 						}}
 					>
-						<Report fill={tab === 9 ? '#FFFF' : '#4F4F4F'} />
-						Reports
+						<UserIcon fill={tab === 9 ? '#FFFF' : '#4F4F4F'} />
+						Reviews
 					</StyledListItem>
 					<StyledListItem
 						className={tab === 10 ? 'active' : ''}
@@ -244,7 +245,16 @@ export default function DashboardSideBar() {
 							handleview(10);
 						}}
 					>
-						<Setting fill={tab === 10 ? '#FFFF' : '#4F4F4F'} />
+						<Report fill={tab === 10 ? '#FFFF' : '#4F4F4F'} />
+						Reports
+					</StyledListItem>
+					<StyledListItem
+						className={tab === 11 ? 'active' : ''}
+						onClick={() => {
+							handleview(11);
+						}}
+					>
+						<Setting fill={tab === 11 ? '#FFFF' : '#4F4F4F'} />
 						Settings
 					</StyledListItem>
 					<StyledListItem>

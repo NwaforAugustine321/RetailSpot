@@ -21,8 +21,10 @@ const Container = styled.div<{ width: string }>`
 	align-items: center;
 	justify-content: flex-start;
 	gap: 1rem;
+	margin-top: 8rem;
 	@media (max-width: ${(props) => props.width && props.width}px) {
 		justify-content: center;
+		margin-top: 4rem;
 	}
 `;
 const NextButton = styled.button`

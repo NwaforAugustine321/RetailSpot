@@ -7,6 +7,9 @@ import ForgotpasswordScreen from '../Screens/Account/ForgotPassword/Forgotpasswo
 import DashboardScreen from '../Screens/Dashboard/Dashboard';
 import NotFound from '../Screens/404';
 import UsersScreeen from '../Screens/Dashboard/User';
+import CreatUserScreen from '../Screens/Dashboard/CreatUser';
+import UserDetailScreen from '../Screens/Dashboard/UserDetail';
+import Store from '../Screens/Dashboard/Store';
 
 export default function Paths() {
 	return (
@@ -16,6 +19,9 @@ export default function Paths() {
 				<Route path='/account/login' element={<LoginScreen />} />
 				<Route path='/account/reset' element={<ForgotpasswordScreen />} />
 				<Route path='/account/users' element={<UsersScreeen />} />
+				<Route path='/user/create' element={<CreatUserScreen />} />
+				<Route path='/user/details' element={<UserDetailScreen />} />
+				<Route path='/user/store' element={<Store />} />
 			</Routes>
 		</Router>
 	);

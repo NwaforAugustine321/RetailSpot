@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { ReactComponent as ViewIcon } from '../../../assets/view.svg';
+import { ReactComponent as ViewIcon } from '../../../../assets/view.svg';
 
 const Container = styled.div`
 	background: var(--bg-color);
