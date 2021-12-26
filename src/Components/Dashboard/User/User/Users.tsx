@@ -88,7 +88,8 @@ const InnerContainer = styled.div`
 	background: var(--bg-color);
 	height: 878px;
 	border-radius: 8px;
-	padding: 3rem 1rem;
+	padding: 3rem 1.5rem;
+	max-width: 500px;
 	margin: 0rem auto;
 	@media (min-width: 1400px) {
 		padding: 3rem 4rem;
@@ -97,8 +98,6 @@ const InnerContainer = styled.div`
 
 const Wrapper = styled.div`
 	width: 100%;
-	max-width: 500px;
-	margin: 0rem auto;
 `;
 
 const StyledList = styled.ul`

@@ -126,8 +126,13 @@ export default function DashboardSideBar() {
 					<Text>Settings</Text>
 				</View>
 				<View>
-					<SpotIcon className='Mobile-span-icon' fill='#E3562A' />
-					<Text>Stores</Text>
+					<a href='/user/store'>
+						<SpotIcon className='Mobile-span-icon' fill='#E3562A' />
+					</a>
+
+					<Text>
+						<a href='/user/store'> Stores</a>
+					</Text>
 				</View>
 				<View>
 					<a href='/'>
