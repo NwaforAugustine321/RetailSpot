@@ -294,8 +294,10 @@ export default function DashboardHeader({ className }: any) {
 							handleview(7);
 						}}
 					>
-						<UserIcon fill={tab === 7 ? '#FFFF' : '#4F4F4F'} />
-						Reviews
+						<a href='/user/review'>
+							<UserIcon fill={tab === 7 ? '#FFFF' : '#4F4F4F'} />
+						</a>
+						<a href='/user/review'>Reviews</a>
 					</StyledListItem>
 					<StyledListItem>Sign Out</StyledListItem>
 				</StyledList>

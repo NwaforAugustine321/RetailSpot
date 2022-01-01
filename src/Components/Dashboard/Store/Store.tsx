@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useState } from 'react';
+import { useState, useReducer } from 'react';
 
 import DashboardContainer from '../../../Components/Dashboard/Dashboard/DashboardContainer/DashboardContainer';
 import Card from './Card';
@@ -9,6 +9,7 @@ import url from '../../../assets/store.png';
 import Modal from '../../../Components/Partial/Modal';
 import Input from '../../../Template/Input/Input';
 import { ReactComponent as Edit } from '../../../assets/edit.svg';
+import { ReactComponent as EditCrossIcon } from '../../../assets/editCrossIcon.svg';
 
 const preview = ['url', 'url1', 'url2'];
 const data = [
@@ -202,6 +203,31 @@ const StoreImagePreview = styled.img`
 	border-radius: 8px;
 `;
 
+const StoreImagePreviewEdit = styled.label`
+	display: block;
+	text-align: center;
+	max-width: 77px;
+	height: 83px;
+	border-radius: 8px;
+	background: #f7f7f7;
+	position: relative;
+	cursor: pointer;
+`;
+
+const CrossEditIcon = styled(EditCrossIcon)`
+	position: absolute;
+	top: 45%;
+	left: 50%;
+	transform: translateX(-50%);
+`;
+
+const EditPreview = styled.input`
+	visibility: hidden;
+	max-width: 77px;
+	height: 83px;
+	border: none;
+`;
+
 const PreviewContainer = styled.div`
 	display: flex;
 	max-width: 135px;
@@ -353,6 +379,7 @@ const StyledListItem = styled.li`
 	font-style: normal;
 	font-weight: normal;
 	font-size: 14px;
+	cursor: pointer;
 	line-height: 21px;
 	color: #50555c;
 	border-radius: 8px;
@@ -377,6 +404,41 @@ export default function Store() {
 	const handleview = () => {
 		setupdate(!update);
 	};
+	const reducer = (
+		state: { tab: string; title: string },
+		action: { type: string }
+	) => {
+		switch (action.type) {
+			case 'All':
+				return {
+					tab: '1',
+					title: 'All',
+				};
+			case 'Active':
+				return {
+					tab: '2',
+					title: 'Active',
+				};
+			case 'Inactive':
+				return {
+					tab: '3',
+					title: 'Inactive',
+				};
+			default:
+				return state;
+		}
+	};
+	let initialState = {
+		tab: '1',
+		title: 'All',
+	};
+	const [state, dispatch] = useReducer(reducer, initialState);
+
+	const handTab = (payload: string) => {
+		dispatch({
+			type: payload,
+		});
+	};
 
 	return (
 		<DashboardContainer>
@@ -391,9 +453,30 @@ export default function Store() {
 				</GridTop>
 				<GridMain>
 					<StyledList>
-						<StyledListItem>All</StyledListItem>
-						<StyledListItem className='user-active'>Active</StyledListItem>
-						<StyledListItem>Inactive</StyledListItem>
+						<StyledListItem
+							className={state.tab === '1' ? 'user-active' : undefined}
+							onClick={() => {
+								handTab('All');
+							}}
+						>
+							All
+						</StyledListItem>
+						<StyledListItem
+							className={state.tab === '2' ? 'user-active' : undefined}
+							onClick={() => {
+								handTab('Active');
+							}}
+						>
+							Active
+						</StyledListItem>
+						<StyledListItem
+							className={state.tab === '3' ? 'user-active' : undefined}
+							onClick={() => {
+								handTab('Inactive');
+							}}
+						>
+							Inactive
+						</StyledListItem>
 						<StyledListItem>
 							<a href='/user/create'>Add New</a>
 						</StyledListItem>
@@ -474,6 +557,10 @@ export default function Store() {
 								<StoreImagePreview src={url} />
 								<StoreImagePreview src={url} />
 								<StoreImagePreview src={url} />
+								<StoreImagePreviewEdit>
+									<CrossEditIcon />
+									<EditPreview type='text' />
+								</StoreImagePreviewEdit>
 							</StoreImagePreviewContainer>
 						</Field>
 						<StyledButton text='Update' onClick={handleview} />

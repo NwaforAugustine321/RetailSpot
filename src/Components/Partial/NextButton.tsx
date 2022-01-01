@@ -16,10 +16,10 @@ const PrevButton = styled.button`
 	gap: 1rem;
 	cursor: pointer;
 `;
-const Container = styled.div<{ width: string }>`
+const Container = styled.div<{ width: string; align: string }>`
 	display: flex;
 	align-items: center;
-	justify-content: flex-start;
+	justify-content: ${(props) => (props.align ? props.align : 'flex-start')};
 	gap: 1rem;
 	margin-top: 8rem;
 	@media (max-width: ${(props) => props.width && props.width}px) {
@@ -59,9 +59,9 @@ const PagesContainer = styled.div`
 	}
 `;
 
-export default function PiginationButton({ adjust }: any) {
+export default function PiginationButton({ adjust, align }: any) {
 	return (
-		<Container width={adjust}>
+		<Container width={adjust} align={align}>
 			<PrevButton>
 				<PrevIcon /> Previous
 			</PrevButton>

@@ -25,6 +25,9 @@ const Grid = styled.div`
 			'main side'
 			'footer footer';
 	}
+	@media (max-width: 640px) {
+		padding: 1rem;
+	}
 `;
 
 const GridTop = styled.div`

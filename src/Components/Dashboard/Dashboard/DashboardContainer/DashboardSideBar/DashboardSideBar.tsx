@@ -241,8 +241,10 @@ export default function DashboardSideBar() {
 							handleview(9);
 						}}
 					>
-						<UserIcon fill={tab === 9 ? '#FFFF' : '#4F4F4F'} />
-						Reviews
+						<a href='/user/review'>
+							<UserIcon fill={tab === 9 ? '#FFFF' : '#4F4F4F'} />
+						</a>
+						<a href='/user/review'>Reviews</a>
 					</StyledListItem>
 					<StyledListItem
 						className={tab === 10 ? 'active' : ''}

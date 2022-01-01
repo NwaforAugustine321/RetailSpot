@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useReducer } from 'react';
 import styled from 'styled-components';
 
 import DashboardContainer from '../../Dashboard/DashboardContainer/DashboardContainer';
@@ -197,6 +197,7 @@ const StyledListItem = styled.li`
 	font-style: normal;
 	font-weight: normal;
 	font-size: 14px;
+	cursor: pointer;
 	line-height: 21px;
 	color: #50555c;
 	border-radius: 8px;
@@ -256,6 +257,42 @@ export default function Users() {
 	const handleview = () => {
 		setuser(!user);
 	};
+	const reducer = (
+		state: { tab: string; title: string },
+		action: { type: string }
+	) => {
+		switch (action.type) {
+			case 'owner':
+				return {
+					tab: '1',
+					title: 'Add Store Owner',
+				};
+			case 'customer':
+				return {
+					tab: '2',
+					title: 'Add Customer',
+				};
+			case 'staff':
+				return {
+					tab: '3',
+					title: 'Add Staff',
+				};
+			default:
+				return state;
+		}
+	};
+	let initialState = {
+		tab: '1',
+		title: 'Add Store Owner',
+	};
+	const [state, dispatch] = useReducer(reducer, initialState);
+
+	const handTab = (payload: string) => {
+		dispatch({
+			type: payload,
+		});
+	};
+
 	return (
 		<DashboardContainer>
 			<Grid>
@@ -269,9 +306,30 @@ export default function Users() {
 				</GridTop>
 				<GridMain>
 					<StyledList>
-						<StyledListItem>Store Owners</StyledListItem>
-						<StyledListItem className='user-active'>Customers</StyledListItem>
-						<StyledListItem>Staff</StyledListItem>
+						<StyledListItem
+							className={state.tab === '1' ? 'user-active' : undefined}
+							onClick={() => {
+								handTab('owner');
+							}}
+						>
+							Store Owners
+						</StyledListItem>
+						<StyledListItem
+							className={state.tab === '2' ? 'user-active' : undefined}
+							onClick={() => {
+								handTab('customer');
+							}}
+						>
+							Customers
+						</StyledListItem>
+						<StyledListItem
+							className={state.tab === '3' ? 'user-active' : undefined}
+							onClick={() => {
+								handTab('staff');
+							}}
+						>
+							Staff
+						</StyledListItem>
 						<StyledListItem>
 							<a href='/user/create'>Add New</a>
 						</StyledListItem>
