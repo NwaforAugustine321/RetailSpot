@@ -249,8 +249,11 @@ export default function DashboardHeader({ className }: any) {
 							handleview(2);
 						}}
 					>
-						<StoreIcon fill={tab === 2 ? '#FFFF' : '#4F4F4F'} />
-						Bookings
+						<a href='/user/booking'>
+							<StoreIcon fill={tab === 2 ? '#FFFF' : '#4F4F4F'} />
+						</a>
+
+						<a href='/user/booking'>Bookings</a>
 					</StyledListItem>
 					<StyledListItem
 						className={tab === 3 ? 'active' : ''}

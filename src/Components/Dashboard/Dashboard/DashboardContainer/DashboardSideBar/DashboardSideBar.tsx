@@ -197,7 +197,8 @@ export default function DashboardSideBar() {
 						}}
 					>
 						<StoreIcon fill={tab === 4 ? '#FFFF' : '#4F4F4F'} />
-						Bookings
+
+						<a href='/user/booking'>Bookings</a>
 					</StyledListItem>
 					<StyledListItem
 						className={tab === 5 ? 'active' : ''}

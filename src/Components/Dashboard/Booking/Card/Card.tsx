@@ -4,41 +4,43 @@ import styled from 'styled-components';
 import { ReactComponent as DotIcon } from '../../../../assets/dot.svg';
 
 const CardContainer = styled.div`
-	min-height: 125px;
 	display: flex;
-	padding: 0rem 1rem;
-	gap: 5rem;
-	width: 1440px;
-	justify-content: space-between;
+	padding: 0rem 1rem 0.5rem 1rem;
+	gap: 1rem;
 	background: var(--bg-color);
 	border-bottom: 1px solid #e3e3e3;
-	&:hover {
-		box-shadow: 0px 2px 49px rgba(0, 0, 0, 0.19);
-	}
-	// @media (max-width: 1250px) {
-	// 	flex-direction: column;
+	// &:hover {
+	// 	box-shadow: 0px 2px 49px rgba(0, 0, 0, 0.19);
 	// }
-	@media (max-width: 1250px) {
-		gap: 1rem;
+	@media (max-width: 1150px) {
+		flex-direction: column;
+	}
+
+	@media (min-width: 1150px) {
+		gap: 5rem;
+		min-height: 125px;
+		justify-content: space-between;
 	}
 `;
 const LeftContainer = styled.div`
 	display: flex;
-	width: 45%;
+	width: 50%;
 	align-items: center;
 	justify-content: space-between;
-	@media (min-width: 1250px) {
-		width: 50%;
+	@media (max-width: 1150px) {
+		width: 100%;
 	}
 `;
 const RightContainer = styled.div`
 	display: flex;
-	width: 60%;
+	width: 50%;
 	align-items: center;
 	gap: 3rem;
+	justify-content: space-around;
 	//justify-content: space-between;
-	@media (min-width: 1250px) {
-		width: 50%;
+	@media (max-width: 1150px) {
+		justify-content: flex-end;
+		width: 100%;
 	}
 `;
 
@@ -47,6 +49,9 @@ const ProfileContainer = styled.div`
 	align-items: center;
 	justify-content: space-between;
 	gap: 2rem;
+	@media (max-width: 450px) {
+		gap: 0.6rem;
+	}
 `;
 
 const Profile = styled.img`
@@ -54,7 +59,7 @@ const Profile = styled.img`
 	height: 58px;
 	background: #c4c4c4;
 	border-radius: 22px;
-	@media (max-width: 1250px) {
+	@media (max-width: 1150px) {
 		width: 40px;
 		height: 40px;
 	}
@@ -78,6 +83,9 @@ const ID = styled.h1`
 	@media (max-width: 1250px) {
 		font-size: 0.8rem;
 	}
+	@media (max-width: 450px) {
+		font-size: 0.7rem;
+	}
 `;
 const Name = styled.h2`
 	//font-family: SF UI Text;
@@ -100,6 +108,15 @@ const Date = styled.h1`
 	@media (max-width: 1250px) {
 		font-size: 0.8rem;
 	}
+	@media (max-width: 350px) {
+		font-size: 0.6rem;
+	}
+
+	span {
+		@media (max-width: 450px) {
+			display: none;
+		}
+	}
 `;
 
 const Time = styled.h2`
@@ -117,14 +134,19 @@ const Time = styled.h2`
 const StatusContainer = styled.div`
 	display: flex;
 	justify-content: space-between;
-	width: 35%;
+	@media (max-width: 1150px) {
+		justify-content: flex-end;
+		gap: 5rem;
+	}
+	@media (min-width: 1150px) {
+		width: 35%;
+	}
 `;
 
-const Checked = styled.div`
-	width: 9px;
-	height: 9px;
-	background: #e3562a;
-	border-radius: 2px;
+const CheckedDate = styled.div`
+	@media (max-width: 1150px) {
+		display: none;
+	}
 `;
 
 const Status = styled.h1`
@@ -152,21 +174,23 @@ export default function Card(props: any) {
 				</ProfileContainer>
 
 				<div>
-					<Date>Sunday, Oct 24th, 2020</Date>
+					<Date>
+						<span>Sunday ,</span> Oct 24th, 2020
+					</Date>
 					<Time>08:29 AM</Time>
 				</div>
 			</LeftContainer>
 
 			<RightContainer>
-				<div>
+				<CheckedDate>
 					<Date>Oct 29th, 2020</Date>
 					<Time>08:29 AM</Time>
-				</div>
+				</CheckedDate>
 
-				<div>
+				<CheckedDate>
 					<Date>Oct 29th, 2020</Date>
 					<Time>08:29 AM</Time>
-				</div>
+				</CheckedDate>
 
 				<StatusContainer>
 					<Status>Refunded</Status>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Children } from 'react';
 import styled from 'styled-components';
 
 interface IuseButton {
@@ -7,6 +7,7 @@ interface IuseButton {
 	padding?: string;
 	margin?: string;
 	text: string;
+	children?: any;
 	className?: string;
 	onClick?: () => void;
 }
@@ -30,9 +31,10 @@ const CustomButton = styled.button<IuseButton>`
 `;
 
 export default function Button(props: IuseButton) {
-	const { text, margin } = props;
+	const { text, margin, children } = props;
 	return (
 		<CustomButton margin={margin} {...props}>
+			{children}
 			{text}
 		</CustomButton>
 	);
