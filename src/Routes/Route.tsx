@@ -12,6 +12,7 @@ import UserDetailScreen from '../Screens/Dashboard/UserDetail';
 import Store from '../Screens/Dashboard/Store';
 import BookingScreen from '../Screens/Dashboard/Booking';
 import ReviewScreen from '../Screens/Dashboard/Review';
+import CouponScreen from '../Screens/Dashboard/Coupon';
 
 export default function Paths() {
 	return (
@@ -26,6 +27,7 @@ export default function Paths() {
 				<Route path='/user/store' element={<Store />} />
 				<Route path='/user/review' element={<ReviewScreen />} />
 				<Route path='/user/booking' element={<BookingScreen />} />
+				<Route path='/user/coupon' element={<CouponScreen />} />
 			</Routes>
 		</Router>
 	);
