@@ -268,6 +268,27 @@ const Paragraph = styled.p`
 	}
 `;
 
+const ManageTitle = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 2rem 3rem;
+	background: #f4e0da;
+	border-radius: 6px;
+	margin-bottom: 0.5rem;
+`;
+
+const Text = styled.h1`
+	font-family: SF UI Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 1.13rem;
+	color: #707070;
+	@media (max-width: 768px) {
+		font-size: 0.9rem;
+	}
+`;
+
 export default function Delivery() {
 	const [update, setupdate] = useState<Boolean>(false);
 	const handleview = () => {
@@ -297,6 +318,10 @@ export default function Delivery() {
 								</To>
 							</TimeContainer>
 						</HeaderContainer>
+						<ManageTitle>
+							<Text>Name</Text>
+							<Text>Manage</Text>
+						</ManageTitle>
 						<Card />
 					</GridMain>
 
