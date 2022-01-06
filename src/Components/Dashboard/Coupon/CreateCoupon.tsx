@@ -28,6 +28,7 @@ const StyledButton = styled(Button)`
 	border-radius: 0px;
 	height: 64px;
 	max-width: 465px;
+	cursor: pointer;
 	margin: 0;
 	margin-bottom: 3.8rem;
 	font-size: 0.9rem;
@@ -94,62 +95,65 @@ const Title = styled.h1`
 	}
 `;
 
-export default function CreateCoupon() {
+export default function CreateCoupon(props: { handleOpen: () => void }) {
 	return (
-		<DashboardContainer>
-			<Grid>
-				<Title>Create Coupon</Title>
+		<Grid>
+			<Title>Create Coupon</Title>
 
-				<Form>
-					<Field>
-						<Label>Coupon name</Label>
-						<StyledInput type='text' />
-					</Field>
-					<FormContainer>
-						<div>
-							<Field>
-								<Label>Coupon Code</Label>
-								<StyledInput type='text' />
-							</Field>
-							<Field>
-								<Label>Limit</Label>
-								<StyledInput type='text' />
-							</Field>
-							<Field>
-								<Label>Discount Amount</Label>
-								<StyledInput type='text' />
-							</Field>
-							<div>
-								<Label>Start Date</Label>
-								<StyledInput type='text' />
-							</div>
-						</div>
+			<Form>
+				<Field>
+					<Label>Coupon name</Label>
+					<StyledInput type='text' />
+				</Field>
+				<FormContainer>
+					<div>
 						<Field>
-							<Field>
-								<Label>Item count</Label>
-								<StyledInput type='text' />
-							</Field>
-							<Field>
-								<Label>Discount type</Label>
-								<StyledInput type='text' />
-							</Field>
-							<Field>
-								<Label>Minimum spend</Label>
-								<StyledInput type='text' />
-							</Field>
-							<div>
-								<Label>End Date</Label>
-								<StyledInput type='text' />
-							</div>
+							<Label>Coupon Code</Label>
+							<StyledInput type='text' />
 						</Field>
-					</FormContainer>
+						<Field>
+							<Label>Limit</Label>
+							<StyledInput type='text' />
+						</Field>
+						<Field>
+							<Label>Discount Amount</Label>
+							<StyledInput type='text' />
+						</Field>
+						<div>
+							<Label>Start Date</Label>
+							<StyledInput type='text' />
+						</div>
+					</div>
 					<Field>
-						<Label>Description</Label>
-						<StyledTextInput placeholder='Add description here' />
+						<Field>
+							<Label>Item count</Label>
+							<StyledInput type='text' />
+						</Field>
+						<Field>
+							<Label>Discount type</Label>
+							<StyledInput type='text' />
+						</Field>
+						<Field>
+							<Label>Minimum spend</Label>
+							<StyledInput type='text' />
+						</Field>
+						<div>
+							<Label>End Date</Label>
+							<StyledInput type='text' />
+						</div>
 					</Field>
-					<StyledButton text='Create coupon' margin='0rem auto' width='542px' />
-				</Form>
-			</Grid>
-		</DashboardContainer>
+				</FormContainer>
+				<Field>
+					<Label>Description</Label>
+					<StyledTextInput placeholder='Add description here' />
+				</Field>
+				<StyledButton
+					text='Create coupon'
+					margin='0rem auto'
+					width='542px'
+					onClick={props.handleOpen}
+				/>
+			</Form>
+		</Grid>
 	);
 }

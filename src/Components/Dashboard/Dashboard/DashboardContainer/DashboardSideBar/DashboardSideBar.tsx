@@ -93,7 +93,7 @@ const Text = styled.span`
 	font-size: 0.7rem;
 	cursor: pointer;
 	@media (min-width: 350px) {
-		font-size: 0.9rem;
+		font-size: 0.7rem;
 	}
 `;
 
@@ -150,8 +150,13 @@ export default function DashboardSideBar() {
 				</View>
 
 				<View>
-					<StoreIcon fill='#E3562A' className='Mobile-span-icon' />
-					<Text>Spots</Text>
+					<a href='/spots'>
+						<StoreIcon fill='#E3562A' className='Mobile-span-icon' />
+					</a>
+
+					<Text>
+						<a href='/spots'> Spots</a>
+					</Text>
 				</View>
 			</MobileView>
 
@@ -196,9 +201,9 @@ export default function DashboardSideBar() {
 							handleview(4);
 						}}
 					>
-						<StoreIcon fill={tab === 4 ? '#FFFF' : '#4F4F4F'} />
+						<UserIcon fill={tab === 4 ? '#FFFF' : '#4F4F4F'} />
 
-						<a href='/user/booking'>Bookings</a>
+						<a href='/spots'>Spots</a>
 					</StyledListItem>
 					<StyledListItem
 						className={tab === 5 ? 'active' : ''}
@@ -207,7 +212,8 @@ export default function DashboardSideBar() {
 						}}
 					>
 						<StoreIcon fill={tab === 5 ? '#FFFF' : '#4F4F4F'} />
-						Deliveries
+
+						<a href='/user/booking'>Bookings</a>
 					</StyledListItem>
 					<StyledListItem
 						className={tab === 6 ? 'active' : ''}
@@ -215,8 +221,8 @@ export default function DashboardSideBar() {
 							handleview(6);
 						}}
 					>
-						<TransactionIcon fill={tab === 6 ? '#FFFF' : '#4F4F4F'} />
-						Transactions
+						<StoreIcon fill={tab === 6 ? '#FFFF' : '#4F4F4F'} />
+						<a href='/user/delivery'> Deliveries</a>
 					</StyledListItem>
 					<StyledListItem
 						className={tab === 7 ? 'active' : ''}
@@ -224,8 +230,8 @@ export default function DashboardSideBar() {
 							handleview(7);
 						}}
 					>
-						<PaymentIcon fill={tab === 7 ? '#FFFF' : '#4F4F4F'} />
-						Payments
+						<TransactionIcon fill={tab === 7 ? '#FFFF' : '#4F4F4F'} />
+						Transactions
 					</StyledListItem>
 					<StyledListItem
 						className={tab === 8 ? 'active' : ''}
@@ -233,8 +239,8 @@ export default function DashboardSideBar() {
 							handleview(8);
 						}}
 					>
-						<UserIcon fill={tab === 8 ? '#FFFF' : '#4F4F4F'} />
-						Coupons
+						<PaymentIcon fill={tab === 8 ? '#FFFF' : '#4F4F4F'} />
+						<a href='/user/payment'> Payments</a>
 					</StyledListItem>
 					<StyledListItem
 						className={tab === 9 ? 'active' : ''}
@@ -242,10 +248,9 @@ export default function DashboardSideBar() {
 							handleview(9);
 						}}
 					>
-						<a href='/user/review'>
-							<UserIcon fill={tab === 9 ? '#FFFF' : '#4F4F4F'} />
-						</a>
-						<a href='/user/review'>Reviews</a>
+						<UserIcon fill={tab === 9 ? '#FFFF' : '#4F4F4F'} />
+
+						<a href='/user/coupon'> Coupons</a>
 					</StyledListItem>
 					<StyledListItem
 						className={tab === 10 ? 'active' : ''}
@@ -253,8 +258,10 @@ export default function DashboardSideBar() {
 							handleview(10);
 						}}
 					>
-						<Report fill={tab === 10 ? '#FFFF' : '#4F4F4F'} />
-						Reports
+						<a href='/user/review'>
+							<UserIcon fill={tab === 10 ? '#FFFF' : '#4F4F4F'} />
+						</a>
+						<a href='/user/review'>Reviews</a>
 					</StyledListItem>
 					<StyledListItem
 						className={tab === 11 ? 'active' : ''}
@@ -262,7 +269,16 @@ export default function DashboardSideBar() {
 							handleview(11);
 						}}
 					>
-						<Setting fill={tab === 11 ? '#FFFF' : '#4F4F4F'} />
+						<Report fill={tab === 11 ? '#FFFF' : '#4F4F4F'} />
+						Reports
+					</StyledListItem>
+					<StyledListItem
+						className={tab === 12 ? 'active' : ''}
+						onClick={() => {
+							handleview(12);
+						}}
+					>
+						<Setting fill={tab === 12 ? '#FFFF' : '#4F4F4F'} />
 						Settings
 					</StyledListItem>
 					<StyledListItem>

@@ -159,44 +159,59 @@ const Status = styled.h1`
 		font-size: 0.8rem;
 	}
 `;
+const TableHeaderList = styled.li`
+	//font-family: SF UI Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 18px;
+	color: #000000;
 
+	list-style: none;
+	@media (max-width: 1150px) {
+		font-size: 0.9rem;
+	}
+`;
 export default function Card(props: any) {
 	return (
-		<CardContainer>
-			<LeftContainer>
-				<ProfileContainer>
-					<CheckInput></CheckInput>
-					<Profile />
+		<>
+			<CardContainer>
+				<LeftContainer>
 					<div>
-						<ID>#GS-2234</ID>
-						<Name>Yonna</Name>
+						<ProfileContainer>
+							<CheckInput></CheckInput>
+							<Profile />
+							<div>
+								<ID>#GS-2234</ID>
+								<Name>Yonna</Name>
+							</div>
+						</ProfileContainer>
 					</div>
-				</ProfileContainer>
 
-				<div>
-					<Date>
-						<span>Sunday ,</span> Oct 24th, 2020
-					</Date>
-					<Time>08:29 AM</Time>
-				</div>
-			</LeftContainer>
+					<div>
+						<Date>
+							<span>Sunday ,</span> Oct 24th, 2020
+						</Date>
+						<Time>08:29 AM</Time>
+					</div>
+				</LeftContainer>
 
-			<RightContainer>
-				<CheckedDate>
-					<Date>Oct 29th, 2020</Date>
-					<Time>08:29 AM</Time>
-				</CheckedDate>
+				<RightContainer>
+					<CheckedDate>
+						<Date>Oct 29th, 2020</Date>
+						<Time>08:29 AM</Time>
+					</CheckedDate>
 
-				<CheckedDate>
-					<Date>Oct 29th, 2020</Date>
-					<Time>08:29 AM</Time>
-				</CheckedDate>
+					<CheckedDate>
+						<Date>Oct 29th, 2020</Date>
+						<Time>08:29 AM</Time>
+					</CheckedDate>
 
-				<StatusContainer>
-					<Status>Refunded</Status>
-					<DotIcon />
-				</StatusContainer>
-			</RightContainer>
-		</CardContainer>
+					<StatusContainer>
+						<Status>Refunded</Status>
+						<DotIcon />
+					</StatusContainer>
+				</RightContainer>
+			</CardContainer>
+		</>
 	);
 }

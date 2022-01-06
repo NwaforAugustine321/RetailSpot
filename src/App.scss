@@ -42,6 +42,11 @@ background: #5BA092 !important;
 color:white !important;
 }
 
+.payment-active{
+background: #5BA092 !important;
+color:white !important;
+}
+
 .page-active{
 width: 51px;
 height: 51px;
@@ -54,4 +59,8 @@ border-radius: 22px;
 .review-active{
   color: #e3562a !important;
   border-bottom: 2px solid #e3562a ;
+}
+
+.delivery-active{
+    border-bottom: 3px solid #F69033 ;
 }

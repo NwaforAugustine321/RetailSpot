@@ -2,40 +2,35 @@ import React from 'react';
 import styled from 'styled-components';
 import Slider from 'react-slick';
 
-import Container from '../../../../Template/Container/Container';
-import { ReactComponent as NewBookingIcon } from '../../../../assets/feature-1.svg';
-import { ReactComponent as SpotBookingIcon } from '../../../../assets/feature-2.svg';
-import { ReactComponent as CheckIcon } from '../../../../assets/feature-3.svg';
+import Container from '../../../Template/Container/Container';
+import { ReactComponent as TotalPaymentIcon } from '../../../assets/paymentIcon-1.svg';
+import { ReactComponent as PaidPaymentIcon } from '../../../assets/paymentIcon-2.svg';
+import { ReactComponent as UnPaidPaymentIcon } from '../../../assets/paymentIcon-3.svg';
+
+let icon = [TotalPaymentIcon, PaidPaymentIcon, UnPaidPaymentIcon];
 
 const data = [
 	{
-		title: 'New Booking',
+		title: 'Total Requests',
 		value: '872',
-		color: '#59D7FF',
+		color: '#ffff',
 	},
 	{
-		title: 'Booked Spots',
+		title: 'Paid Requests',
 		value: '892',
-		color: '#57F998',
+		color: '#ffff',
 	},
 	{
-		title: 'Check In',
+		title: 'Total Unpaid Requests',
 		value: '82',
-		color: '#FFE485',
-	},
-	{
-		title: 'view',
-		value: '82',
-		color: '#E3562A',
+		color: '#ffff',
 	},
 ];
 
-let icon = [NewBookingIcon, SpotBookingIcon, CheckIcon, CheckIcon];
-
 const Grid = styled.div`
 	display: flex;
-	width: 100%;
 	gap: 1rem;
+	margin-bottom: 2rem;
 	justify-content: space-between;
 	@media (max-width: 1024px) {
 		display: none;
@@ -47,7 +42,6 @@ const StyledValue = styled.h1`
 	font-style: normal;
 	font-weight: 600;
 	font-size: 2.25rem;
-	color: var(--bg-color);
 	@media (max-width: 1380px) {
 		font-size: 1.5rem;
 	}
@@ -57,8 +51,7 @@ const StyledTitle = styled.p`
 	font-family: var(--ft-style);
 	font-style: normal;
 	font-weight: 500;
-	font-size: 1.23rem;
-	color: var(--bg-color);
+	font-size: 1.13rem;
 	@media (max-width: 1380px) {
 		font-size: 0.8rem;
 	}
@@ -67,6 +60,7 @@ const StyledTitle = styled.p`
 const StyledContainer = styled(Container)`
 	display: flex;
 	width: 100%;
+	margin: 0;
 	align-items: center;
 	padding: 2.4rem;
 	justify-content: space-between;
@@ -102,7 +96,7 @@ const settings = {
 	],
 };
 
-export default function Features() {
+export default function Overview() {
 	return (
 		<Grid>
 			{data.map((item, index) => {

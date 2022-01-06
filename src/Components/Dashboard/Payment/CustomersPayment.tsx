@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import DashboardContainer from '../Dashboard/DashboardContainer/DashboardContainer';
-import Card from './Card/Card';
+import CustuomerCard from './CustomersCard';
 import Input from '../../../Template/Input/Input';
 import Button from '../../../Template/Button/Button';
 import { SearchOutlined } from '@ant-design/icons';
@@ -11,15 +11,39 @@ import PiginationButton from '../../../Components/Partial/NextButton';
 
 const Grid = styled.div`
 	padding: 4rem 2rem;
-	@media (max-width: 640px) {
+
+	@media (max-width: 1100px) {
 		padding: 1rem;
 	}
 `;
-const Table = styled.div`
-	min-height: 800px;
+
+const NavButtonLeft = styled(Button)`
+	max-width: 135px;
+	height: 49px;
+	background: #5ba092;
+	white-space: nowrap;
+	margin: 0;
+	border: 1px solid #ccd4e0;
+	//	font-family: SF UI Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 0.9rem;
+	padding: 0.9rem;
+`;
+
+const NavButtonRight = styled(Button)`
+	max-width: 135px;
+	height: 49px;
+	white-space: nowrap;
+	margin: 0;
+	border: 1px solid #bdbdbd;
+	box-sizing: border-box;
+	color: var(--sec-text-color);
 	background: var(--bg-color);
-	border-radius: 22px;
-	padding: 2rem 1rem;
+	//	font-family: SF UI Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 0.9rem;
 `;
 
 const StyledButton = styled.button`
@@ -54,41 +78,33 @@ const StyledButton = styled.button`
 	}
 `;
 
-const TableHeader = styled.ul`
-	display: flex;
-	align-items: center;
-	padding: 0rem 0rem;
-	max-width: 95%;
-	margin: 0rem auto;
-	min-height: 70px;
-	border-bottom: 1px solid #e3e3e3;
-	justify-content: space-between;
-	list-style: none;
-	@media (max-width: 1150px) {
-		margin-bottom: 1rem;
-	}
-`;
-
-const Nav = styled.nav`
+const Wrapper = styled.div`
 	display: flex;
 	list-style: none;
 	flex-direction: column;
 	gap: 1rem;
 	align-items: center;
-	width: 73%;
 	min-height: 69px;
 	@media (max-width: 1400px) {
 		padding: 0rem;
 	}
+	@media (min-width: 800px) {
+		max-width: 60%;
+		flex-direction: row;
+		width: 100%;
+		justify-content: space-between;
+	}
+`;
+
+const Nav = styled.nav`
+	width: 73%;
 	@media (max-width: 1190px) {
 		width: 100%;
 	}
 	@media (min-width: 800px) {
-		flex-direction: row;
 		width: 100%;
-		padding: 0rem 3.63rem;
-		justify-content: space-between;
 		background: #ffffff;
+		padding: 0rem 3.63rem;
 		box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.03);
 		border-radius: 20px;
 	}
@@ -111,12 +127,10 @@ const NavItem = styled.li`
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		//padding: 0rem 3.63rem;
 		border-radius: 0px;
 		background: #ffffff;
 		height: 60px;
 		width: 100%;
-
 		box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.03);
 	}
 `;
@@ -130,52 +144,16 @@ const Container = styled.div`
 	}
 `;
 
-const TableHeaderList = styled.li`
-	//font-family: SF UI Text;
-	font-style: normal;
-	font-weight: bold;
-	font-size: 18px;
-	color: #000000;
-	@media (max-width: 1150px) {
-		font-size: 0.9rem;
-	}
-`;
-
-const TableHeaderListStatus = styled.li`
-	//font-family: SF UI Text;
-	font-style: normal;
-	font-weight: bold;
-	width: 35%;
-	font-size: 18px;
-	color: #000000;
-	@media (max-width: 1150px) {
-		font-size: 0.9rem;
-	}
-`;
-const LeftContainer = styled.div`
-	display: flex;
-	width: 40%;
-	align-items: center;
-	justify-content: space-between;
-	@media (max-width: 1150px) {
-		width: 100%;
-		align-items: center;
-	}
-`;
-const RightContainer = styled.div`
-	display: flex;
-	width: 46%;
-	align-items: center;
-	justify-content: space-between;
-	@media (max-width: 1150px) {
-		display: none;
-	}
-`;
-
 const TitleContainer = styled.div`
 	display: flex;
 	justify-content: space-between;
 	margin-bottom: 2.4rem;
+`;
+const ButtonContainer = styled.div`
+	display: flex;
+	gap: 2rem;
+	margin-bottom: 1.4rem;
+	max-width: 400px;
 `;
 
 const Title = styled.h1`
@@ -185,18 +163,6 @@ const Title = styled.h1`
 	font-size: 1.13rem;
 	letter-spacing: -0.5px;
 	margin-bottom: 2.1rem;
-`;
-
-const SubTitle = styled.h1`
-	//	font-family: SF UI Text;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 1.13rem;
-	letter-spacing: -0.5px;
-	color: #525252;
-	span {
-		color: var(--pri-color);
-	}
 `;
 
 const CustomeInputContainer = styled.div`
@@ -218,54 +184,24 @@ const CustomeInputContainer = styled.div`
 	}
 `;
 
-export default function Booking() {
+export default function CustomerPayment() {
 	return (
-		<DashboardContainer>
-			<Grid>
-				<TitleContainer>
-					<div>
-						<Title>Booking History</Title>
-						<SubTitle>
-							<span>Stores / </span> Ebeano
-						</SubTitle>
-					</div>
-					<StyledButton>
-						<BtnIcon />
-						<span>Generate Report</span>
-					</StyledButton>
-				</TitleContainer>
-				<Container>
-					<Nav>
+		<>
+			<Container>
+				<Nav>
+					<Wrapper>
 						<NavItem className='review-active'>All Bookings (216)</NavItem>
 						<NavItem>Pending</NavItem>
-						<NavItem>On-going</NavItem>
 						<NavItem>Completed</NavItem>
-						<NavItem>Cancelled</NavItem>
-						<NavItem>Refunded</NavItem>
-					</Nav>
+					</Wrapper>
+				</Nav>
 
-					<CustomeInputContainer>
-						<Input type='text' width='298px' placeholder='Search here' />
-						<SearchOutlined />
-					</CustomeInputContainer>
-				</Container>
-				<Table>
-					<TableHeader>
-						<LeftContainer>
-							<TableHeaderList>Customer</TableHeaderList>
-							<TableHeaderList>Date Order</TableHeaderList>
-						</LeftContainer>
-
-						<RightContainer>
-							<TableHeaderList>Check In</TableHeaderList>
-							<TableHeaderList>Check Out</TableHeaderList>
-							<TableHeaderListStatus>Status</TableHeaderListStatus>
-						</RightContainer>
-					</TableHeader>
-					<Card />
-				</Table>
-				<PiginationButton align='flex-end' />
-			</Grid>
-		</DashboardContainer>
+				<CustomeInputContainer>
+					<Input type='text' width='298px' placeholder='Search here' />
+					<SearchOutlined />
+				</CustomeInputContainer>
+			</Container>
+			<CustuomerCard />
+		</>
 	);
 }

@@ -1,5 +1,5 @@
-import CreateCoupon from '../../Components/Dashboard/Coupon/CreateCoupon';
+import Coupon from '../../Components/Dashboard/Coupon/coupon';
 
 export default function CouponScreen() {
-	return <CreateCoupon />;
+	return <Coupon />;
 }

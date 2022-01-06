@@ -261,8 +261,10 @@ export default function DashboardHeader({ className }: any) {
 							handleview(3);
 						}}
 					>
-						<StoreIcon fill={tab === 3 ? '#FFFF' : '#4F4F4F'} />
-						Deliveries
+						<a href='/user/delivery'>
+							<StoreIcon fill={tab === 3 ? '#FFFF' : '#4F4F4F'} />
+						</a>
+						<a href='/user/delivery'> Deliveries</a>
 					</StyledListItem>
 					<StyledListItem
 						className={tab === 4 ? 'active' : ''}
@@ -279,8 +281,10 @@ export default function DashboardHeader({ className }: any) {
 							handleview(5);
 						}}
 					>
-						<PaymentIcon fill={tab === 5 ? '#FFFF' : '#4F4F4F'} />
-						Payments
+						<a href='/user/payment'>
+							<PaymentIcon fill={tab === 5 ? '#FFFF' : '#4F4F4F'} />
+						</a>
+						<a href='/user/payment'> Payments</a>
 					</StyledListItem>
 					<StyledListItem
 						className={tab === 6 ? 'active' : ''}
@@ -288,8 +292,10 @@ export default function DashboardHeader({ className }: any) {
 							handleview(6);
 						}}
 					>
-						<UserIcon fill={tab === 6 ? '#FFFF' : '#4F4F4F'} />
-						Coupons
+						<a href='/user/payment'>
+							<UserIcon fill={tab === 6 ? '#FFFF' : '#4F4F4F'} />
+						</a>
+						<a href='/user/coupon'> Coupons</a>
 					</StyledListItem>
 					<StyledListItem
 						className={tab === 7 ? 'active' : ''}
