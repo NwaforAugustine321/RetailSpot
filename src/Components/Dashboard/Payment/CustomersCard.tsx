@@ -172,7 +172,6 @@ const DateColumn = styled.div`
 	grid-area: date;
 	display: flex;
 	align-items: center;
-	justify-self: center;
 `;
 const Time = styled.h5`
 	//font-family: SF UI Text;
@@ -219,7 +218,6 @@ const HeaderStore = styled.div`
 `;
 const HeaderDate = styled.div`
 	grid-area: header-date;
-	justify-self: center;
 `;
 const CheckInput = styled.input`
 	max-width: 19px;
@@ -285,10 +283,10 @@ export default function CustuomerCard() {
 					<HeaderText>Reference</HeaderText>
 				</HeaderReference>
 				<HeaderDate>
-					<HeaderText> Date</HeaderText>
+					<HeaderText>Date</HeaderText>
 				</HeaderDate>
 				<HeaderStore>
-					<HeaderText> Store</HeaderText>
+					<HeaderText>Store</HeaderText>
 				</HeaderStore>
 				<HeaderAmount>
 					<HeaderText>Amount</HeaderText>
