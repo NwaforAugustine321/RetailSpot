@@ -5,9 +5,9 @@ import DashboardContainer from '../../Dashboard/DashboardContainer/DashboardCont
 import Customer from './Customer';
 import Staff from './Staff';
 import Owner from './Owner';
-import Modal from '../../../../Components/Partial/Modal';
-import SmallModal from '../../../../Template/Modal/Modal';
-import ImageModal from '../../../../Template/Modal/ImageModal';
+import ModalContainer from '../../../Partial/ModalContainer';
+import ConfirmModal from '../../../../Template/Modal/ConfirmModal';
+import TextModal from '../../../../Template/Modal/TextModal';
 
 const Grid = styled.div`
 	padding: 4rem 1rem;
@@ -230,8 +230,8 @@ export default function CreatUser() {
 					{state.tab === '1' && <Owner />}
 				</GridMain>
 			</Grid>
-			{/* <Modal>
-				<ImageModal buttonText1='Cancel' buttonText2='Suspend'>
+			<ModalContainer>
+				<TextModal buttonText1='Cancel' buttonText2='Suspend'>
 					<DetailContainer>
 						<DetailHeader>Do you want to delete this user?</DetailHeader>
 						<DetailInnerContainer>
@@ -243,13 +243,13 @@ export default function CreatUser() {
 						</DetailInnerContainer>
 					</DetailContainer>
 					<StyledTextArea placeholder='Add a message'></StyledTextArea>
-				</ImageModal>
-			</Modal> */}
-			{/* <Modal>
-				<SmallModal buttonText1='Cancel' buttonText2='Suspend'>
+				</TextModal>
+			</ModalContainer>
+			<ModalContainer>
+				<ConfirmModal buttonText1='Cancel' buttonText2='Suspend'>
 					<CreateText>User was successfully created.</CreateText>
-				</SmallModal>
-			</Modal> */}
+				</ConfirmModal>
+			</ModalContainer>
 		</DashboardContainer>
 	);
 }

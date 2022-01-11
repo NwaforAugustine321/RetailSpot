@@ -4,6 +4,7 @@ import styled from 'styled-components';
 const MainContainer = styled.div`
 	position: fixed;
 	display: flex;
+
 	align-items: center;
 	justify-content: center;
 	top: 0;
@@ -24,11 +25,14 @@ const MainContainer = styled.div`
 const Content = styled.div`
 	margin: 0rem 1rem;
 	width: 100%;
-	position: absolute;
-	top: 1px;
+	//	position: absolute;
+	transform: translateY(8%);
+	@media (max-width: 700px) {
+		transform: translateY(15%);
+	}
 `;
 
-export default function Modal({ children }: any) {
+export default function ModalContainer({ children }: any) {
 	return (
 		<MainContainer>
 			<Content>{children}</Content>

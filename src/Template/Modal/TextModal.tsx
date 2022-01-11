@@ -4,22 +4,14 @@ import Button from '../Button/Button';
 
 const MainContainer = styled.div`
 	width: 100%;
-	max-width: 900px;
-	height: 354px;
+	max-width: 779px;
+	min-height: 626px;
 	margin: 0rem auto;
-	padding: 4rem 5.4rem;
+	padding: 4rem 3.7rem;
+	border-radius: 8px;
 	background: var(--bg-color);
-	@media (max-width: 1024px) {
-		max-width: 500px;
-		padding: 4rem 2rem;
-	}
-	@media (max-width: 500px) {
-		max-width: 400px;
+	@media (max-width: 640px) {
 		padding: 4rem 1rem;
-	}
-
-	@media (max-width: 300px) {
-		max-width: 250px;
 	}
 `;
 
@@ -33,44 +25,42 @@ const ButtonContainer = styled.div`
 `;
 
 const StyledLeftButton = styled(Button)`
-	border-radius: 0px;
 	background: var(--bg-color);
 	border: 1px solid #4f4f4f;
-	height: 71px;
-	max-width: 384px;
 	//font-family: SF UI Text;
 	font-style: normal;
 	font-weight: normal;
 	color: #50555c;
 	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 8px;
+	@media (min-width: 1024px) {
+		height: 26px;
+		max-width: 105px;
+	}
 `;
 
 const StyledRightButton = styled(Button)`
-	border-radius: 0px;
-	height: 71px;
-	max-width: 384px;
 	//font-family: SF UI Text;
 	font-style: normal;
 	font-weight: normal;
 	cursor: pointer;
-`;
-
-const StyledContent = styled.div`
-	max-width: 384px;
-	margin: 0rem auto 5.2rem auto;
-	@media (max-width: 1024px) {
-		margin: 0rem auto 3.5rem auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 8px;
+	@media (min-width: 1024px) {
+		height: 26px;
+		max-width: 105px;
 	}
 `;
 
-export default function SmallModal({
-	children,
-	buttonText1,
-	buttonText2,
-}: any) {
+export default function TextModal({ children, buttonText1, buttonText2 }: any) {
 	return (
 		<MainContainer>
-			<StyledContent>{children}</StyledContent>
+			{children}
 			<ButtonContainer>
 				<StyledLeftButton text={buttonText1} />
 				<StyledRightButton text={buttonText2} />

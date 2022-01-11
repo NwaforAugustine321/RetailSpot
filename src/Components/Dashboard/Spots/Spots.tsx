@@ -6,7 +6,7 @@ import Card from './Card';
 import PiginationButton from '../../../Components/Partial/NextButton';
 import Button from '../../../Template/Button/Button';
 import url from '../../../assets/spots.png';
-import Modal from '../../../Components/Partial/Modal';
+import Modal from '../../Partial/ModalContainer';
 import Input from '../../../Template/Input/Input';
 import { ReactComponent as Edit } from '../../../assets/edit.svg';
 import { ReactComponent as EditCrossIcon } from '../../../assets/editCrossIcon.svg';

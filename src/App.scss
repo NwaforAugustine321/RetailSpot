@@ -64,3 +64,15 @@ border-radius: 22px;
 .delivery-active{
     border-bottom: 3px solid #F69033 ;
 }
+
+.checked{
+  	background: #ff0000;
+}
+
+.report-active{
+  background: #ffceb7 !important;
+	
+  @media (min-width: 800px) {
+		border: 0.6px solid #fd6721;
+	}
+}

@@ -16,6 +16,10 @@ import CouponScreen from '../Screens/Dashboard/Coupon';
 import PaymentScreen from '../Screens/Dashboard/Payment';
 import DeliveryScreen from '../Screens/Dashboard/Delivery';
 import SpotsScreen from '../Screens/Dashboard/Spots';
+import TransactionScreen from '../Screens/Dashboard/Transaction';
+import SettingScreen from '../Screens/Dashboard/Setting';
+import ActivitiesScreen from '../Screens/Dashboard/Activities';
+import ReportScreen from '../Screens/Dashboard/Report';
 
 export default function Paths() {
 	return (
@@ -34,6 +38,10 @@ export default function Paths() {
 				<Route path='/user/delivery' element={<DeliveryScreen />} />
 				<Route path='/user/payment' element={<PaymentScreen />} />
 				<Route path='/spots' element={<SpotsScreen />} />
+				<Route path='/user/transactions' element={<TransactionScreen />} />
+				<Route path='/user/settings' element={<SettingScreen />} />
+				<Route path='/user/report' element={<ReportScreen />} />
+				<Route path='/user/activities' element={<ActivitiesScreen />} />
 			</Routes>
 		</Router>
 	);

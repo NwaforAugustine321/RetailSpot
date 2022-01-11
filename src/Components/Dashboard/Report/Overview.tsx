@@ -6,53 +6,54 @@ import Container from '../../../Template/Container/Container';
 import { ReactComponent as TotalPaymentIcon } from '../../../assets/paymentIcon-1.svg';
 import { ReactComponent as PaidPaymentIcon } from '../../../assets/paymentIcon-2.svg';
 import { ReactComponent as UnPaidPaymentIcon } from '../../../assets/paymentIcon-3.svg';
-
-let icon = [TotalPaymentIcon, PaidPaymentIcon, UnPaidPaymentIcon];
+import { ReactComponent as PaymentArrowIcon } from '../../../assets/paymentArrow.svg';
 
 const data = [
 	{
-		title: 'Total Requests',
-		value: '872',
-		color: '#ffff',
+		title: 'All Payments',
+		value: '₦5,540',
+		color: '#41B1440D',
 	},
 	{
-		title: 'Paid Requests',
-		value: '892',
-		color: '#ffff',
+		title: 'Successful',
+		value: '₦5,540',
+		color: '#fd67211c',
 	},
 	{
-		title: 'Total Unpaid Requests',
-		value: '82',
-		color: '#ffff',
+		title: 'Pedding',
+		value: '₦5,540',
+		color: '#E9FDF8',
 	},
 ];
 
 const Grid = styled.div`
 	display: flex;
 	gap: 1rem;
-	max-width: 80%;
 	margin-bottom: 2rem;
 	justify-content: space-between;
-	@media (max-width: 1024px) {
+	@media (max-width: 1230px) {
 		display: none;
 	}
 `;
 
 const StyledValue = styled.h1`
-	font-family: var(--ft-style);
+	//	font-family: SF UI Text;
 	font-style: normal;
-	font-weight: 600;
-	font-size: 2.25rem;
+	font-weight: normal;
+	font-size: 1rem;
+	color: #425a70;
 	@media (max-width: 1380px) {
 		font-size: 1.5rem;
 	}
 `;
 
 const StyledTitle = styled.p`
-	font-family: var(--ft-style);
+	//font-family: SF UI Text;
 	font-style: normal;
-	font-weight: 500;
-	font-size: 1.13rem;
+	white-space: nowrap;
+	font-weight: normal;
+	font-size: 1rem;
+	color: #425a70;
 	@media (max-width: 1380px) {
 		font-size: 0.8rem;
 	}
@@ -60,10 +61,12 @@ const StyledTitle = styled.p`
 
 const StyledContainer = styled(Container)`
 	display: flex;
-	width: 100%;
 	margin: 0;
+	width: 184px;
+	height: 74px;
 	align-items: center;
-	padding: 2.4rem;
+	padding: 2.4rem 1rem;
+	gap: 1rem;
 	justify-content: space-between;
 	@media (max-width: 1200px) {
 		padding: 1rem;
@@ -97,24 +100,17 @@ const settings = {
 	],
 };
 
-export default function Overview() {
+export default function ReportOverview() {
 	return (
 		<Grid>
 			{data.map((item, index) => {
-				const Icon = icon[index];
 				return (
-					<StyledContainer
-						width='339'
-						height='164'
-						key={index}
-						color={item.color}
-						boarder='22'
-					>
+					<StyledContainer key={index} color={item.color} boarder='22'>
+						<PaymentArrowIcon />
 						<div>
-							<StyledValue>{item.value}</StyledValue>
 							<StyledTitle>{item.title}</StyledTitle>
+							<StyledValue>{item.value}</StyledValue>
 						</div>
-						<Icon />
 					</StyledContainer>
 				);
 			})}

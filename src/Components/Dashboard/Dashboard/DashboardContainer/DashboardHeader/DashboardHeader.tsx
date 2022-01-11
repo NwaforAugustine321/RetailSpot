@@ -272,8 +272,10 @@ export default function DashboardHeader({ className }: any) {
 							handleview(4);
 						}}
 					>
-						<TransactionIcon fill={tab === 4 ? '#FFFF' : '#4F4F4F'} />
-						Transactions
+						<a href='/user/transactions'>
+							<TransactionIcon fill={tab === 4 ? '#FFFF' : '#4F4F4F'} />
+						</a>
+						<a href='/user/transactions'>Transactions</a>
 					</StyledListItem>
 					<StyledListItem
 						className={tab === 5 ? 'active' : ''}

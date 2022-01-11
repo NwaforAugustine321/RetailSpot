@@ -231,7 +231,8 @@ export default function DashboardSideBar() {
 						}}
 					>
 						<TransactionIcon fill={tab === 7 ? '#FFFF' : '#4F4F4F'} />
-						Transactions
+
+						<a href='/user/transactions'>Transactions</a>
 					</StyledListItem>
 					<StyledListItem
 						className={tab === 8 ? 'active' : ''}

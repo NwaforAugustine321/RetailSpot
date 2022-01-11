@@ -6,7 +6,7 @@ import Card from './Card';
 import PiginationButton from '../../../Components/Partial/NextButton';
 import Button from '../../../Template/Button/Button';
 import url from '../../../assets/store.png';
-import Modal from '../../../Components/Partial/Modal';
+import ModalContainer from '../../Partial/ModalContainer';
 import Input from '../../../Template/Input/Input';
 import { ReactComponent as Edit } from '../../../assets/edit.svg';
 import { ReactComponent as EditCrossIcon } from '../../../assets/editCrossIcon.svg';
@@ -523,7 +523,7 @@ export default function Store() {
 				<GridFooter></GridFooter>
 			</Grid>
 			{update && (
-				<Modal>
+				<ModalContainer>
 					<StyledStoreUpdateContainer>
 						<Field>
 							<Label>Store</Label>
@@ -565,7 +565,7 @@ export default function Store() {
 						</Field>
 						<StyledButton text='Update' onClick={handleview} />
 					</StyledStoreUpdateContainer>
-				</Modal>
+				</ModalContainer>
 			)}
 		</DashboardContainer>
 	);

@@ -24,17 +24,18 @@ const TableHeader = styled.div`
 		'header-amount'
 		'header-type'
 		'header-status';
-	@media (max-width: 1100px) {
-		grid-template-columns: repeat(4, 1fr);
-		grid-template-areas: 'header-reference header-date header-amount header-status';
+
+	@media (max-width: 1230px) {
+		grid-template-columns: repeat(3, 1fr);
+		grid-template-areas: 'header-reference header-date header-customer';
 	}
-	@media (min-width: 1100px) {
-		grid-template-columns: repeat(6, 1fr);
-		grid-template-areas: 'header-reference header-date header-store header-amount header-type header-status';
+
+	@media (min-width: 1230px) {
+		grid-template-columns: repeat(7, 1fr);
+		grid-template-areas: 'header-reference header-date header-store header-customer header-amount header-type header-status';
 	}
 
 	@media (max-width: 640px) {
-		grid-template-columns: repeat(3, 1fr);
 		grid-row-gap: 1.5rem;
 		grid-template-areas: 'header-reference header-reference header-date';
 	}
@@ -64,22 +65,25 @@ const CardContainer = styled.div`
 		'amount'
 		'type'
 		'status';
-	@media (max-width: 1100px) {
-		grid-template-columns: repeat(4, 1fr);
+
+	@media (max-width: 1230px) {
+		grid-template-columns: repeat(3, 1fr);
 		padding: 1rem;
 		grid-row-gap: 1.5rem;
-		grid-template-areas: 'reference date amount status';
+		grid-template-areas:
+			'reference date customer'
+			'status status amount ';
 	}
-	@media (min-width: 1100px) {
-		grid-template-columns: repeat(6, 1fr);
-		grid-template-areas: 'reference date store amount type status';
+
+	@media (min-width: 1230px) {
+		grid-template-columns: repeat(7, 1fr);
+		grid-template-areas: 'reference date store customer amount type status';
 	}
 	@media (max-width: 640px) {
-		grid-template-columns: repeat(3, 1fr);
 		grid-row-gap: 1.5rem;
 		grid-template-areas:
 			'reference reference date '
-			'status status amount';
+			'customer customer amount';
 	}
 `;
 const ReferenceColumn = styled.div`
@@ -106,7 +110,7 @@ const Status = styled.div`
 	align-items: center;
 	justify-content: center;
 	padding: 0.9rem 2rem;
-	@media (max-width: 1100px) {
+	@media (max-width: 1230px) {
 		height: 35px;
 	}
 `;
@@ -117,13 +121,16 @@ const StatusColumn = styled.div`
 	padding-right: 0.8rem;
 	gap: 1rem;
 	justify-content: space-between;
+	@media (max-width: 640px) {
+		display: none;
+	}
 `;
 const TypeColumn = styled.div`
 	grid-area: type;
 	display: flex;
 	align-items: center;
 	gap: 1rem;
-	@media (max-width: 1100px) {
+	@media (max-width: 1230px) {
 		display: none;
 	}
 `;
@@ -154,7 +161,7 @@ const StoreColumn = styled.div`
 	grid-area: store;
 	display: flex;
 	align-items: center;
-	@media (max-width: 1100px) {
+	@media (max-width: 1230px) {
 		display: none;
 	}
 `;
@@ -167,10 +174,25 @@ const Store = styled.h5`
 		font-size: 0.9rem;
 	}
 `;
+
+const CustomerColumn = styled.div`
+	grid-area: customer;
+	display: flex;
+	align-items: center;
+`;
+const Customer = styled.h5`
+	//	font-family: SF UI Text;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 1rem;
+	@media (max-width: 1100px) {
+		font-size: 0.9rem;
+	}
+`;
 const DateColumn = styled.div`
 	grid-area: date;
 	display: flex;
-	align-items: center; ;
+	align-items: center;
 `;
 const Time = styled.h5`
 	//font-family: SF UI Text;
@@ -193,25 +215,32 @@ const HeaderReference = styled.div`
 `;
 const HeaderStatus = styled.div`
 	grid-area: header-status;
-	@media (max-width: 640px) {
+	@media (max-width: 1230px) {
 		display: none;
 	}
 `;
 const HeaderType = styled.div`
 	grid-area: header-type;
-	@media (max-width: 1100px) {
+	@media (max-width: 1230px) {
 		display: none;
 	}
 `;
 const HeaderAmount = styled.div`
 	grid-area: header-amount;
-	@media (max-width: 640px) {
+	@media (max-width: 1230px) {
 		display: none;
 	}
 `;
 const HeaderStore = styled.div`
 	grid-area: header-store;
-	@media (max-width: 1100px) {
+	@media (max-width: 1220px) {
+		display: none;
+	}
+`;
+
+const HeaderCustomer = styled.div`
+	grid-area: header-customer;
+	@media (max-width: 640px) {
 		display: none;
 	}
 `;
@@ -226,7 +255,7 @@ const CheckInput = styled.input`
 `;
 
 const StyledDetailIcon = styled(DetailIcon)`
-	@media (max-width: 1100px) {
+	@media (max-width: 1230px) {
 		display: none;
 	}
 `;
@@ -249,6 +278,7 @@ const DropDownItem = styled.h4`
 	cursor: pointer;
 	background: #f7f7f7;
 	display: flex;
+	justify-content: center;
 	gap: 1rem;
 	&:hover {
 		background-color: var(--bg-color);
@@ -282,16 +312,19 @@ export default function Card() {
 					<HeaderText>Reference</HeaderText>
 				</HeaderReference>
 				<HeaderDate>
-					<HeaderText> Date</HeaderText>
+					<HeaderText>Date</HeaderText>
 				</HeaderDate>
 				<HeaderStore>
-					<HeaderText> Store</HeaderText>
+					<HeaderText>Store</HeaderText>
 				</HeaderStore>
+				<HeaderCustomer>
+					<HeaderText>Customer</HeaderText>
+				</HeaderCustomer>
 				<HeaderAmount>
 					<HeaderText>Amount</HeaderText>
 				</HeaderAmount>
 				<HeaderType>
-					<HeaderText>Type</HeaderText>
+					<HeaderText>Payment</HeaderText>
 				</HeaderType>
 				<HeaderStatus>
 					<HeaderText>Status</HeaderText>
@@ -311,12 +344,15 @@ export default function Card() {
 				<StoreColumn>
 					<Store>Ebeano Lekki</Store>
 				</StoreColumn>
+				<CustomerColumn>
+					<Customer>Ebeano Lekki</Customer>
+				</CustomerColumn>
 				<AmountColumn>
 					<Amount>₦783.22</Amount>
 				</AmountColumn>
 				<TypeColumn>
 					<Icon />
-					<Type>Booking</Type>
+					<Type>Card</Type>
 				</TypeColumn>
 				<StatusColumn>
 					<Status>Pending</Status>
@@ -328,20 +364,9 @@ export default function Card() {
 				{open && (
 					<DropDownContainer>
 						<DropDown>
-							<DropDownItem>
-								<InfoIcon />
-								View Details
-							</DropDownItem>
-							<DropDownItem>
-								{' '}
-								<ApprovedIcon />
-								Approve Payment
-							</DropDownItem>
-							<DropDownItem>
-								{' '}
-								<UnApprovedIcon />
-								Decline Payment
-							</DropDownItem>
+							<DropDownItem>View Details</DropDownItem>
+							<DropDownItem>Confirm Payment</DropDownItem>
+							<DropDownItem>Cancel Transaction</DropDownItem>
 						</DropDown>
 					</DropDownContainer>
 				)}
