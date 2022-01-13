@@ -179,6 +179,9 @@ const Nav = styled.div`
 		border-radius: 20px;
 		padding: 0rem 1rem;
 	}
+	@media (max-width: 640px) {
+		padding: 0rem;
+	}
 `;
 
 const NavWrapper = styled.nav`

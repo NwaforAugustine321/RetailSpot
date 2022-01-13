@@ -24,7 +24,7 @@ const TableHeader = styled.div`
 
 	@media (min-width: 1230px) {
 		grid-template-columns: repeat(8, 1fr);
-		grid-template-areas: 'header-spot header-spot header-spot  header-spot header-store  header-store header-service  header-booking ';
+		grid-template-areas: 'header-spot header-spot header-store  header-store header-service header-add-on header-add-on header-booking ';
 	}
 
 	@media (max-width: 768px) {
@@ -61,9 +61,7 @@ const CardContainer = styled.div`
 	@media (min-width: 1230px) {
 		grid-template-columns: repeat(8, 1fr);
 		grid-row-gap: 0.9rem;
-		grid-template-areas:
-			'spot spot  spot spot store  store service booking'
-			'add-on add-on add-on add-on add-on add-on add-on add-on';
+		grid-template-areas: 'spot spot store  store service add-on add-on booking';
 	}
 
 	@media (max-width: 768px) {
@@ -91,8 +89,8 @@ const PreviewContainer = styled.div`
 `;
 
 const Image = styled.img`
-	width: 206px;
-	height: 96px;
+	width: 50px;
+	height: 50px;
 	border-radius: 11px;
 	@media (max-width: 768px) {
 		width: 50px;
@@ -211,16 +209,18 @@ const HeaderService = styled.div`
 
 const HeaderAddOn = styled.div`
 	grid-area: header-add-on;
-	@media (max-width: 768px) {
-		display: none;
-	}
+
 	@media (max-width: 1230px) {
 		display: none;
 	}
 	@media (max-width: 640px) {
 		display: none;
 	}
-	@media (min-width: 1230px) {
+
+	@media (max-width: 768px) {
+		display: none;
+	}
+	@media (max-width: 1230px) {
 		display: none;
 	}
 `;
@@ -299,7 +299,8 @@ export default function Card() {
 				</ServiceColumn>
 				<AddOnColumn>
 					<Items>
-						AC, Shower, Double Bed, Towel Bathup, Coffee Set, LED TV, Wifi
+						AC, Shower, Double Bed, <br /> Towel Bathup, Coffee Set, <br />
+						LED TV, Wifi
 					</Items>
 				</AddOnColumn>
 				<BookingColumn>

@@ -10,21 +10,15 @@ import { ReactComponent as InfoIcon } from '../../../assets/info.svg';
 const Container = styled.div`
 	background: var(--bg-color);
 	display: flex;
-	width: 100%;
+	max-width: 1057px;
 	height: 92px;
 	position: relative;
-
 	cursor: pointer;
 	border-radius: 8px;
 	padding: 1rem 2rem;
 	align-items: center;
 	margin-bottom: 1rem;
 	justify-content: space-between;
-	@media (max-width: 768px) {
-		flex-direction: column;
-		height: auto;
-		gap: 1rem;
-	}
 
 	@media (max-width: 1330px) {
 		margin: 0rem auto 1rem auto;
@@ -70,26 +64,12 @@ const TitleText = styled.h1`
 	}
 `;
 
-const Address = styled.h1`
-	font-family: var(--ft-style);
-	font-style: normal;
-	font-weight: normal;
-	font-size: 0.9rem;
-	color: #bebab3;
-	@media (max-width: 400px) {
-		font-size: 0.7rem;
-	}
-`;
-
 const RightContainer = styled.div`
 	display: flex;
 	width: 2%;
 	align-items: center;
 	justify-content: space-between;
 	gap: 2rem;
-	@media (max-width: 768px) {
-		width: 100%;
-	}
 `;
 
 const LeftContainer = styled.div`
@@ -142,7 +122,7 @@ const DropDownContainer = styled.div`
 	}
 `;
 
-export default function Card(props: any) {
+export default function ManageCard(props: any) {
 	const [open, setopen] = useState<Boolean>(false);
 	const handleopen = () => {
 		setopen(!open);
@@ -153,8 +133,7 @@ export default function Card(props: any) {
 			<LeftContainer>
 				<Profile>CJ</Profile>
 				<div>
-					<TitleText>Platform Fee</TitleText>
-					<Address>10%</Address>
+					<TitleText>Super Market</TitleText>
 				</div>
 			</LeftContainer>
 
@@ -165,18 +144,12 @@ export default function Card(props: any) {
 				<DropDownContainer>
 					<DropDown>
 						<DropDownItem>
-							<InfoIcon />
-							View Details
-						</DropDownItem>
-						<DropDownItem>
-							{' '}
 							<ApprovedIcon />
-							Approve Payment
+							Activate
 						</DropDownItem>
 						<DropDownItem>
-							{' '}
 							<UnApprovedIcon />
-							Decline Payment
+							Delete Fees
 						</DropDownItem>
 					</DropDown>
 				</DropDownContainer>

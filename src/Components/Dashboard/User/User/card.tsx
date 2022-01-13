@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 import { ReactComponent as ViewIcon } from '../../../../assets/view.svg';
 
@@ -23,6 +24,7 @@ const Container = styled.div`
 	@media (max-width: 1330px) {
 		margin: 0rem auto 1rem auto;
 	}
+	cursor: pointer;
 `;
 
 const RightContainerCustomer = styled.div`
@@ -136,8 +138,13 @@ const NotActive = styled.div`
 `;
 
 export default function Card(props: any) {
+	let path = useNavigate();
+
+	const handlelocation = () => {
+		path('/user/details');
+	};
 	return (
-		<Container>
+		<Container onClick={handlelocation}>
 			<LeftContainerCustomer>
 				<Profile></Profile>
 				<div>

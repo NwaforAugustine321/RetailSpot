@@ -18,13 +18,13 @@ const GridBottom = styled.div`
 	}
 `;
 const RightContainer = styled.div`
-	width: 45%;
+	width: 30%;
 	@media (max-width: 1100px) {
 		width: 100%;
 	}
 `;
 const LeftContainer = styled.div`
-	width: 50%;
+	width: 60%;
 	@media (max-width: 1100px) {
 		width: 100%;
 	}

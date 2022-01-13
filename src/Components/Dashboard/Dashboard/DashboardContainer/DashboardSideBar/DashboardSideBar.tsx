@@ -145,8 +145,13 @@ export default function DashboardSideBar() {
 				</View>
 
 				<View>
-					<Report className='Mobile-span-icon' fill='#E3562A' />
-					<Text> Reports</Text>
+					<a href='/user/report'>
+						<Report className='Mobile-span-icon' fill='#E3562A' />
+					</a>
+
+					<Text>
+						<a href='/user/report'> Reports</a>
+					</Text>
 				</View>
 
 				<View>
@@ -270,8 +275,10 @@ export default function DashboardSideBar() {
 							handleview(11);
 						}}
 					>
-						<Report fill={tab === 11 ? '#FFFF' : '#4F4F4F'} />
-						Reports
+						<a href='/user/report'>
+							<Report fill={tab === 11 ? '#FFFF' : '#4F4F4F'} />
+						</a>
+						<a href='/user/report'> Reports</a>
 					</StyledListItem>
 					<StyledListItem
 						className={tab === 12 ? 'active' : ''}
@@ -279,8 +286,11 @@ export default function DashboardSideBar() {
 							handleview(12);
 						}}
 					>
-						<Setting fill={tab === 12 ? '#FFFF' : '#4F4F4F'} />
-						Settings
+						<a href='/user/settings'>
+							<Setting fill={tab === 12 ? '#FFFF' : '#4F4F4F'} />
+						</a>
+
+						<a href='/user/settings'>Settings</a>
 					</StyledListItem>
 					<StyledListItem>
 						<LogOutIcon />
