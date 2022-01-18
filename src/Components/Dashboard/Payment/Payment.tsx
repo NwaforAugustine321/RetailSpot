@@ -111,6 +111,7 @@ const NavItem = styled.li`
 	font-weight: 500;
 	font-size: 1.13rem;
 	height: 100%;
+	cursor: pointer;
 	display: flex;
 	align-items: center;
 	color: rgba(0, 0, 0, 0.3);
@@ -201,6 +202,59 @@ export default function Payment() {
 		}
 	};
 
+	const storeReducer = (
+		state: { tab: string; title: string },
+		action: { type: string }
+	) => {
+		switch (action.type) {
+			case 'All Bookings':
+				return {
+					tab: '1',
+					title: 'All Bookings',
+				};
+			case 'Pending':
+				return {
+					tab: '2',
+					title: 'Pending',
+				};
+			case 'On-going':
+				return {
+					tab: '3',
+					title: 'On-going',
+				};
+			case 'Completed':
+				return {
+					tab: '4',
+					title: 'Completed',
+				};
+			case 'Cancelled':
+				return {
+					tab: '5',
+					title: 'Cancelled',
+				};
+			case 'Refunded':
+				return {
+					tab: '6',
+					title: 'Refunded',
+				};
+			default:
+				return state;
+		}
+	};
+	let initialStoreState = {
+		tab: '1',
+		title: 'All Bookings',
+	};
+	const [storesState, dispatchstore] = useReducer(
+		storeReducer,
+		initialStoreState
+	);
+	const handTabNav = (payload: string) => {
+		dispatchstore({
+			type: payload,
+		});
+	};
+
 	const [state, dispatch] = useReducer(reducer, initialState);
 	const [tab, settab] = useState(false);
 	const handTab = (payload: string) => {
@@ -248,12 +302,66 @@ export default function Payment() {
 				{state.title === 'Store' ? (
 					<Container>
 						<Nav>
-							<NavItem className='review-active'>All Bookings (216)</NavItem>
-							<NavItem>Pending</NavItem>
-							<NavItem>On-going</NavItem>
-							<NavItem>Completed</NavItem>
-							<NavItem>Cancelled</NavItem>
-							<NavItem>Refunded</NavItem>
+							<NavItem
+								className={
+									storesState.tab === '1' ? 'review-active' : undefined
+								}
+								onClick={() => {
+									handTabNav('All Bookings');
+								}}
+							>
+								All Bookings (216)
+							</NavItem>
+							<NavItem
+								className={
+									storesState.tab === '2' ? 'review-active' : undefined
+								}
+								onClick={() => {
+									handTabNav('Pending');
+								}}
+							>
+								Pending
+							</NavItem>
+							<NavItem
+								className={
+									storesState.tab === '3' ? 'review-active' : undefined
+								}
+								onClick={() => {
+									handTabNav('On-going');
+								}}
+							>
+								On-going
+							</NavItem>
+							<NavItem
+								className={
+									storesState.tab === '4' ? 'review-active' : undefined
+								}
+								onClick={() => {
+									handTabNav('Completed');
+								}}
+							>
+								Completed
+							</NavItem>
+							<NavItem
+								className={
+									storesState.tab === '5' ? 'review-active' : undefined
+								}
+								onClick={() => {
+									handTabNav('Cancelled');
+								}}
+							>
+								Cancelled
+							</NavItem>
+							<NavItem
+								className={
+									storesState.tab === '6' ? 'review-active' : undefined
+								}
+								onClick={() => {
+									handTabNav('Refunded');
+								}}
+							>
+								Refunded
+							</NavItem>
 						</Nav>
 
 						<CustomeInputContainer>

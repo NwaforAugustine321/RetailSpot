@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useState } from 'react';
+import { useState, useReducer } from 'react';
 
 import DashboardContainer from '../../../Components/Dashboard/Dashboard/DashboardContainer/DashboardContainer';
 import Button from '../../../Template/Button/Button';
@@ -84,6 +84,7 @@ const NavItem = styled.li`
 	font-style: normal;
 	font-weight: 500;
 	font-size: 1.13rem;
+	cursor: pointer;
 	min-height: 69px;
 	display: flex;
 	align-items: center;
@@ -294,6 +295,52 @@ export default function Delivery() {
 	const handleview = () => {
 		setupdate(!update);
 	};
+	const reducer = (
+		state: { tab: string; title: string },
+		action: { type: string }
+	) => {
+		switch (action.type) {
+			case 'All':
+				return {
+					tab: '1',
+					title: 'All',
+				};
+			case 'New':
+				return {
+					tab: '2',
+					title: 'New',
+				};
+			case 'Assigned':
+				return {
+					tab: '3',
+					title: 'Assigned',
+				};
+			case 'In Progress':
+				return {
+					tab: '4',
+					title: 'In Progress',
+				};
+			case 'Completed':
+				return {
+					tab: '5',
+					title: 'Completed',
+				};
+
+			default:
+				return state;
+		}
+	};
+	let initialState = {
+		tab: '1',
+		title: 'All',
+	};
+	const [state, dispatch] = useReducer(reducer, initialState);
+
+	const handTab = (payload: string) => {
+		dispatch({
+			type: payload,
+		});
+	};
 	return (
 		<DashboardContainer>
 			<Container>
@@ -302,11 +349,46 @@ export default function Delivery() {
 					<GridMain>
 						<HeaderContainer>
 							<Nav>
-								<NavItem className='delivery-active'>All</NavItem>
-								<NavItem>New</NavItem>
-								<NavItem>Assigned</NavItem>
-								<NavItem>In Progress</NavItem>
-								<NavItem>Completed</NavItem>
+								<NavItem
+									className={state.tab === '1' ? 'delivery-active' : undefined}
+									onClick={() => {
+										handTab('All');
+									}}
+								>
+									All
+								</NavItem>
+								<NavItem
+									className={state.tab === '2' ? 'delivery-active' : undefined}
+									onClick={() => {
+										handTab('New');
+									}}
+								>
+									New
+								</NavItem>
+								<NavItem
+									className={state.tab === '3' ? 'delivery-active' : undefined}
+									onClick={() => {
+										handTab('Assigned');
+									}}
+								>
+									Assigned
+								</NavItem>
+								<NavItem
+									className={state.tab === '4' ? 'delivery-active' : undefined}
+									onClick={() => {
+										handTab('In Progress');
+									}}
+								>
+									In Progress
+								</NavItem>
+								<NavItem
+									className={state.tab === '5' ? 'delivery-active' : undefined}
+									onClick={() => {
+										handTab('Completed');
+									}}
+								>
+									Completed
+								</NavItem>
 							</Nav>
 
 							<TimeContainer>

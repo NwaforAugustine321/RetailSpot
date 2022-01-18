@@ -8,6 +8,7 @@ import Features from './Features';
 import Activities from '../Dahboard/Activities/Activities';
 import RecentView from './RecentView/RecentView';
 
+
 const Grid = styled.div`
 	display: grid;
 	padding: 1rem 2rem;
@@ -32,6 +33,7 @@ const Grid = styled.div`
 
 const GridTop = styled.div`
 	grid-area: top;
+	overflow: hidden;
 `;
 
 const GridMain = styled.div`

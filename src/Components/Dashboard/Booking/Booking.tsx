@@ -1,4 +1,4 @@
-import React from 'react';
+import { useReducer } from 'react';
 import styled from 'styled-components';
 
 import DashboardContainer from '../Dashboard/DashboardContainer/DashboardContainer';
@@ -100,6 +100,7 @@ const NavItem = styled.li`
 	font-weight: 500;
 	font-size: 1.13rem;
 	height: 100%;
+	cursor: pointer;
 	display: flex;
 	align-items: center;
 	color: rgba(0, 0, 0, 0.3);
@@ -219,6 +220,56 @@ const CustomeInputContainer = styled.div`
 `;
 
 export default function Booking() {
+	const reducer = (
+		state: { tab: string; title: string },
+		action: { type: string }
+	) => {
+		switch (action.type) {
+			case 'All Bookings':
+				return {
+					tab: '1',
+					title: 'All Bookings',
+				};
+			case 'Pending':
+				return {
+					tab: '2',
+					title: 'Pending',
+				};
+			case 'On-going':
+				return {
+					tab: '3',
+					title: 'On-going',
+				};
+			case 'Completed':
+				return {
+					tab: '4',
+					title: 'Completed',
+				};
+			case 'Cancelled':
+				return {
+					tab: '5',
+					title: 'Cancelled',
+				};
+			case 'Refunded':
+				return {
+					tab: '6',
+					title: 'Refunded',
+				};
+			default:
+				return state;
+		}
+	};
+	let initialState = {
+		tab: '1',
+		title: 'All Bookings',
+	};
+	const [state, dispatch] = useReducer(reducer, initialState);
+
+	const handTab = (payload: string) => {
+		dispatch({
+			type: payload,
+		});
+	};
 	return (
 		<DashboardContainer>
 			<Grid>
@@ -236,12 +287,54 @@ export default function Booking() {
 				</TitleContainer>
 				<Container>
 					<Nav>
-						<NavItem className='review-active'>All Bookings (216)</NavItem>
-						<NavItem>Pending</NavItem>
-						<NavItem>On-going</NavItem>
-						<NavItem>Completed</NavItem>
-						<NavItem>Cancelled</NavItem>
-						<NavItem>Refunded</NavItem>
+						<NavItem
+							className={state.tab === '1' ? 'review-active' : undefined}
+							onClick={() => {
+								handTab('All Bookings');
+							}}
+						>
+							All Bookings (216)
+						</NavItem>
+						<NavItem
+							className={state.tab === '2' ? 'review-active' : undefined}
+							onClick={() => {
+								handTab('Pending');
+							}}
+						>
+							Pending
+						</NavItem>
+						<NavItem
+							className={state.tab === '3' ? 'review-active' : undefined}
+							onClick={() => {
+								handTab('On-going');
+							}}
+						>
+							On-going
+						</NavItem>
+						<NavItem
+							className={state.tab === '4' ? 'review-active' : undefined}
+							onClick={() => {
+								handTab('Completed');
+							}}
+						>
+							Completed
+						</NavItem>
+						<NavItem
+							className={state.tab === '5' ? 'review-active' : undefined}
+							onClick={() => {
+								handTab('Cancelled');
+							}}
+						>
+							Cancelled
+						</NavItem>
+						<NavItem
+							className={state.tab === '6' ? 'review-active' : undefined}
+							onClick={() => {
+								handTab('Refunded');
+							}}
+						>
+							Refunded
+						</NavItem>
 					</Nav>
 
 					<CustomeInputContainer>

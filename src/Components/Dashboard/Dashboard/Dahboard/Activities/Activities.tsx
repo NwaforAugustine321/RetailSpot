@@ -1,4 +1,4 @@
-import React from 'react';
+import { useReducer } from 'react';
 import styled from 'styled-components';
 
 import { ReactComponent as DateIcon } from '../../../../../assets/date.svg';
@@ -128,6 +128,47 @@ const StyledHeader = styled.ul`
 `;
 
 export default function Activities() {
+	const reducer = (
+		state: { tab: string; title: string },
+		action: { type: string }
+	) => {
+		switch (action.type) {
+			case 'Lifetime':
+				return {
+					tab: '1',
+					title: 'Lifetime',
+				};
+			case 'Daily':
+				return {
+					tab: '2',
+					title: 'Daily',
+				};
+			case 'Weekly':
+				return {
+					tab: '3',
+					title: 'Weekly',
+				};
+			case 'Monthly':
+				return {
+					tab: '4',
+					title: 'Monthly',
+				};
+			default:
+				return state;
+		}
+	};
+	let initialState = {
+		tab: '1',
+		title: 'Lifetime',
+	};
+	const [state, dispatch] = useReducer(reducer, initialState);
+
+	const handTab = (payload: string) => {
+		dispatch({
+			type: payload,
+		});
+	};
+
 	return (
 		<Container>
 			<StyledDate>
@@ -135,12 +176,38 @@ export default function Activities() {
 			</StyledDate>
 			<StyledHeader>
 				<InnerContainer>
-					<StyledHeaderItem>Lifetime</StyledHeaderItem>
-					<StyledHeaderItem className='activities-active'>
+					<StyledHeaderItem
+						className={state.tab === '1' ? 'activities-active' : undefined}
+						onClick={() => {
+							handTab('Lifetime');
+						}}
+					>
+						Lifetime
+					</StyledHeaderItem>
+					<StyledHeaderItem
+						className={state.tab === '2' ? 'activities-active' : undefined}
+						onClick={() => {
+							handTab('Daily');
+						}}
+					>
 						Daily
 					</StyledHeaderItem>
-					<StyledHeaderItem>Weekly</StyledHeaderItem>
-					<StyledHeaderItem>Monthly</StyledHeaderItem>
+					<StyledHeaderItem
+						className={state.tab === '3' ? 'activities-active' : undefined}
+						onClick={() => {
+							handTab('Weekly');
+						}}
+					>
+						Weekly
+					</StyledHeaderItem>
+					<StyledHeaderItem
+						className={state.tab === '4' ? 'activities-active' : undefined}
+						onClick={() => {
+							handTab('Monthly');
+						}}
+					>
+						Monthly
+					</StyledHeaderItem>
 				</InnerContainer>
 			</StyledHeader>
 			<Grid>

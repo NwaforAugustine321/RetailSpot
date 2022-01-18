@@ -1,12 +1,12 @@
-import React from 'react';
+import { useEffect, useRef, useCallback } from 'react';
 import styled from 'styled-components';
-import Slider from 'react-slick';
 
 import Container from '../../../../Template/Container/Container';
 import { ReactComponent as NewBookingIcon } from '../../../../assets/feature-1.svg';
 import { ReactComponent as SpotBookingIcon } from '../../../../assets/feature-2.svg';
 import { ReactComponent as CheckIcon } from '../../../../assets/feature-3.svg';
-
+import Slider from '../../../Partial/Slider/Slider';
+import images from '../../../Partial/Slider/images';
 const data = [
 	{
 		title: 'New Booking',
@@ -103,26 +103,29 @@ const settings = {
 };
 
 export default function Features() {
-	return (
-		<Grid>
-			{data.map((item, index) => {
-				const Icon = icon[index];
-				return (
-					<StyledContainer
-						width='339'
-						height='164'
-						key={index}
-						color={item.color}
-						boarder='22'
-					>
-						<div>
-							<StyledValue>{item.value}</StyledValue>
-							<StyledTitle>{item.title}</StyledTitle>
-						</div>
-						<Icon />
-					</StyledContainer>
-				);
-			})}
-		</Grid>
-	);
+	const MapToSlide = () => {
+		return (
+			<Grid>
+				{data.map((item, index) => {
+					const Icon = icon[index];
+					return (
+						<StyledContainer
+							width='339'
+							height='164'
+							color={item.color}
+							boarder='22'
+						>
+							<div>
+								<StyledValue>{item.value}</StyledValue>
+								<StyledTitle>{item.title}</StyledTitle>
+							</div>
+							<Icon />
+						</StyledContainer>
+					);
+				})}
+			</Grid>
+		);
+	};
+
+	return <Slider slides={[MapToSlide, MapToSlide, MapToSlide]} />;
 }

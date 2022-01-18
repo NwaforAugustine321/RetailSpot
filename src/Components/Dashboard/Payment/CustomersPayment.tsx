@@ -1,4 +1,4 @@
-import React from 'react';
+import { useReducer } from 'react';
 import styled from 'styled-components';
 
 import DashboardContainer from '../Dashboard/DashboardContainer/DashboardContainer';
@@ -115,6 +115,7 @@ const NavItem = styled.li`
 	font-style: normal;
 	font-weight: 500;
 	font-size: 1.13rem;
+	cursor: pointer;
 	height: 100%;
 	display: flex;
 	align-items: center;
@@ -185,14 +186,75 @@ const CustomeInputContainer = styled.div`
 `;
 
 export default function CustomerPayment() {
+	const storeReducer = (
+		state: { tab: string; title: string },
+		action: { type: string }
+	) => {
+		switch (action.type) {
+			case 'All Bookings':
+				return {
+					tab: '1',
+					title: 'All Bookings',
+				};
+			case 'Pending':
+				return {
+					tab: '2',
+					title: 'Pending',
+				};
+
+			case 'Completed':
+				return {
+					tab: '3',
+					title: 'Completed',
+				};
+
+			default:
+				return state;
+		}
+	};
+	let initialStoreState = {
+		tab: '1',
+		title: 'All Bookings',
+	};
+	const [storesState, dispatchstore] = useReducer(
+		storeReducer,
+		initialStoreState
+	);
+	const handTabNav = (payload: string) => {
+		dispatchstore({
+			type: payload,
+		});
+	};
+
 	return (
 		<>
 			<Container>
 				<Nav>
 					<Wrapper>
-						<NavItem className='review-active'>All Bookings (216)</NavItem>
-						<NavItem>Pending</NavItem>
-						<NavItem>Completed</NavItem>
+						<NavItem
+							className={storesState.tab === '1' ? 'review-active' : undefined}
+							onClick={() => {
+								handTabNav('All Bookings');
+							}}
+						>
+							All Bookings (216)
+						</NavItem>
+						<NavItem
+							className={storesState.tab === '2' ? 'review-active' : undefined}
+							onClick={() => {
+								handTabNav('Pending');
+							}}
+						>
+							Pending
+						</NavItem>
+						<NavItem
+							className={storesState.tab === '3' ? 'review-active' : undefined}
+							onClick={() => {
+								handTabNav('Completed');
+							}}
+						>
+							Completed
+						</NavItem>
 					</Wrapper>
 				</Nav>
 

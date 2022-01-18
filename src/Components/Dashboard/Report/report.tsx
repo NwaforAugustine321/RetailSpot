@@ -215,6 +215,7 @@ const NavItem = styled.li`
 	font-family: var(--ft-style);
 	font-style: normal;
 	font-weight: 500;
+	cursor: pointer;
 	font-size: 1.13rem;
 	display: flex;
 	align-items: center;
@@ -659,29 +660,44 @@ const DropDownContainer = styled.div`
 	}
 `;
 export default function Report() {
-	let initialState = {
-		title: 'Store',
-	};
-	const reducer = (state: { title: string }, action: { type: string }) => {
+	const reducer = (
+		state: { tab: string; title: string },
+		action: { type: string }
+	) => {
 		switch (action.type) {
-			case 'Store':
+			case 'All':
 				return {
-					title: 'Store',
+					tab: '1',
+					title: 'All',
 				};
-			case 'Customers':
+			case 'Failed':
 				return {
-					title: 'Customers',
+					tab: '2',
+					title: 'Failed',
+				};
+
+			case 'Pending':
+				return {
+					tab: '3',
+					title: 'Pending',
+				};
+			case 'Successful':
+				return {
+					tab: '4',
+					title: 'Successful',
 				};
 
 			default:
 				return state;
 		}
 	};
-
-	const [state, dispatch] = useReducer(reducer, initialState);
-	const [tab, settab] = useState(false);
+	let initialState = {
+		tab: '1',
+		title: 'All Reviews',
+	};
+	const [state, dispatchstore] = useReducer(reducer, initialState);
 	const handTab = (payload: string) => {
-		dispatch({
+		dispatchstore({
 			type: payload,
 		});
 	};
@@ -728,10 +744,38 @@ export default function Report() {
 								Daily
 								<DropIcon />
 							</NavItemSearchContainer>
-							<NavItem className='report-active'>All</NavItem>
-							<NavItem>Failed</NavItem>
-							<NavItem>Pending</NavItem>
-							<NavItem>Successful</NavItem>
+							<NavItem
+								className={state.tab === '1' ? 'report-active' : undefined}
+								onClick={() => {
+									handTab('All');
+								}}
+							>
+								All
+							</NavItem>
+							<NavItem
+								className={state.tab === '2' ? 'report-active' : undefined}
+								onClick={() => {
+									handTab('Failed');
+								}}
+							>
+								Failed
+							</NavItem>
+							<NavItem
+								className={state.tab === '3' ? 'report-active' : undefined}
+								onClick={() => {
+									handTab('Pending');
+								}}
+							>
+								Pending
+							</NavItem>
+							<NavItem
+								className={state.tab === '4' ? 'report-active' : undefined}
+								onClick={() => {
+									handTab('Successful');
+								}}
+							>
+								Successful
+							</NavItem>
 						</NavWrapper>
 					</Nav>
 				</Container>

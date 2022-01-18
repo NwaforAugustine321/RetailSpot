@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import { MenuOutlined } from '@ant-design/icons';
+import { useLocation } from 'react-router-dom';
 
 import Container from '../../../../../Template/Container/Container';
 import { ReactComponent as Logo } from '../../../../../assets/logo.svg';
@@ -114,7 +115,7 @@ const StyledMenuOutlined = styled(MenuOutlined)`
 
 export default function DashboardSideBar() {
 	const [tab, settab] = useState<number>(1);
-
+	const path = useLocation();
 	const handleview = (tab: number) => {
 		settab(tab);
 	};
@@ -171,123 +172,109 @@ export default function DashboardSideBar() {
 					<StyledMenuOutlined />
 				</MenuContainer>
 				<StyledList>
-					<StyledListItem
-						className={tab === 1 ? 'active' : ''}
-						onClick={() => {
-							handleview(1);
-						}}
-					>
-						<OverViewIcon fill={tab === 1 ? '#FFFF' : '#4F4F4F'} />
+					<StyledListItem className={path.pathname === '/' ? 'active' : ''}>
+						<OverViewIcon fill={path.pathname === '/' ? '#FFFF' : '#4F4F4F'} />
 						<a href='/'> Overview</a>
 					</StyledListItem>
 					<StyledListItem
-						className={tab === 2 ? 'active' : ''}
-						onClick={() => {
-							handleview(2);
-						}}
+						className={path.pathname === '/account/users' ? 'active' : ''}
 					>
-						<UserIcon fill={tab === 2 ? '#FFFF' : '#4F4F4F'} />
+						<UserIcon
+							fill={path.pathname === '/account/users' ? '#FFFF' : '#4F4F4F'}
+						/>
 
 						<a href='/account/users'>Users</a>
 					</StyledListItem>
 					<StyledListItem
-						className={tab === 3 ? 'active' : ''}
-						onClick={() => {
-							handleview(3);
-						}}
+						className={path.pathname === '/user/store' ? 'active' : ''}
 					>
-						<UserIcon fill={tab === 3 ? '#FFFF' : '#4F4F4F'} />
+						<UserIcon
+							fill={path.pathname === '/user/store' ? '#FFFF' : '#4F4F4F'}
+						/>
 
 						<a href='/user/store'>Store</a>
 					</StyledListItem>
 					<StyledListItem
-						className={tab === 4 ? 'active' : ''}
-						onClick={() => {
-							handleview(4);
-						}}
+						className={path.pathname === '/spots' ? 'active' : ''}
 					>
-						<UserIcon fill={tab === 4 ? '#FFFF' : '#4F4F4F'} />
+						<UserIcon fill={path.pathname === '/spots' ? '#FFFF' : '#4F4F4F'} />
 
 						<a href='/spots'>Spots</a>
 					</StyledListItem>
 					<StyledListItem
-						className={tab === 5 ? 'active' : ''}
-						onClick={() => {
-							handleview(5);
-						}}
+						className={path.pathname === '/user/booking' ? 'active' : ''}
 					>
-						<StoreIcon fill={tab === 5 ? '#FFFF' : '#4F4F4F'} />
+						<StoreIcon
+							fill={path.pathname === '/user/booking' ? '#FFFF' : '#4F4F4F'}
+						/>
 
 						<a href='/user/booking'>Bookings</a>
 					</StyledListItem>
 					<StyledListItem
-						className={tab === 6 ? 'active' : ''}
-						onClick={() => {
-							handleview(6);
-						}}
+						className={path.pathname === '/user/delivery' ? 'active' : ''}
 					>
-						<StoreIcon fill={tab === 6 ? '#FFFF' : '#4F4F4F'} />
+						<StoreIcon
+							fill={path.pathname === '/user/delivery' ? '#FFFF' : '#4F4F4F'}
+						/>
 						<a href='/user/delivery'> Deliveries</a>
 					</StyledListItem>
 					<StyledListItem
-						className={tab === 7 ? 'active' : ''}
-						onClick={() => {
-							handleview(7);
-						}}
+						className={path.pathname === '/user/transactions' ? 'active' : ''}
 					>
-						<TransactionIcon fill={tab === 7 ? '#FFFF' : '#4F4F4F'} />
+						<TransactionIcon
+							fill={
+								path.pathname === '/user/transactions' ? '#FFFF' : '#4F4F4F'
+							}
+						/>
 
 						<a href='/user/transactions'>Transactions</a>
 					</StyledListItem>
 					<StyledListItem
-						className={tab === 8 ? 'active' : ''}
-						onClick={() => {
-							handleview(8);
-						}}
+						className={path.pathname === '/user/payment' ? 'active' : ''}
 					>
-						<PaymentIcon fill={tab === 8 ? '#FFFF' : '#4F4F4F'} />
+						<PaymentIcon
+							fill={path.pathname === '/user/payment' ? '#FFFF' : '#4F4F4F'}
+						/>
 						<a href='/user/payment'> Payments</a>
 					</StyledListItem>
 					<StyledListItem
-						className={tab === 9 ? 'active' : ''}
-						onClick={() => {
-							handleview(9);
-						}}
+						className={path.pathname === '/user/coupon' ? 'active' : ''}
 					>
-						<UserIcon fill={tab === 9 ? '#FFFF' : '#4F4F4F'} />
+						<UserIcon
+							fill={path.pathname === '/user/coupon' ? '#FFFF' : '#4F4F4F'}
+						/>
 
 						<a href='/user/coupon'> Coupons</a>
 					</StyledListItem>
 					<StyledListItem
-						className={tab === 10 ? 'active' : ''}
-						onClick={() => {
-							handleview(10);
-						}}
+						className={path.pathname === '/user/review' ? 'active' : ''}
 					>
 						<a href='/user/review'>
-							<UserIcon fill={tab === 10 ? '#FFFF' : '#4F4F4F'} />
+							<UserIcon
+								fill={path.pathname === '/user/review' ? '#FFFF' : '#4F4F4F'}
+							/>
 						</a>
 						<a href='/user/review'>Reviews</a>
 					</StyledListItem>
+
 					<StyledListItem
-						className={tab === 11 ? 'active' : ''}
-						onClick={() => {
-							handleview(11);
-						}}
+						className={path.pathname === '/user/report' ? 'active' : ''}
 					>
 						<a href='/user/report'>
-							<Report fill={tab === 11 ? '#FFFF' : '#4F4F4F'} />
+							<Report
+								fill={path.pathname === '/user/report' ? '#FFFF' : '#4F4F4F'}
+							/>
 						</a>
 						<a href='/user/report'> Reports</a>
 					</StyledListItem>
+
 					<StyledListItem
-						className={tab === 12 ? 'active' : ''}
-						onClick={() => {
-							handleview(12);
-						}}
+						className={path.pathname === '/user/settings' ? 'active' : ''}
 					>
 						<a href='/user/settings'>
-							<Setting fill={tab === 12 ? '#FFFF' : '#4F4F4F'} />
+							<Setting
+								fill={path.pathname === '/user/settings' ? '#FFFF' : '#4F4F4F'}
+							/>
 						</a>
 
 						<a href='/user/settings'>Settings</a>

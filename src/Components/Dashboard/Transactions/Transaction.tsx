@@ -199,6 +199,7 @@ const NavItem = styled.li`
 	font-weight: 500;
 	font-size: 1.13rem;
 	height: 100%;
+	cursor: pointer;
 	display: flex;
 	align-items: center;
 	color: rgba(0, 0, 0, 0.3);
@@ -550,27 +551,47 @@ const HeaderPaid = styled.div`
 	}
 `;
 export default function Transaction() {
-	let initialState = {
-		title: 'Store',
-	};
-	const reducer = (state: { title: string }, action: { type: string }) => {
+	const reducer = (
+		state: { tab: string; title: string },
+		action: { type: string }
+	) => {
 		switch (action.type) {
-			case 'Store':
+			case 'All Bookings':
 				return {
-					title: 'Store',
+					tab: '1',
+					title: 'All Bookings',
 				};
-			case 'Customers':
+			case 'Pending':
 				return {
-					title: 'Customers',
+					tab: '2',
+					title: 'Pending',
 				};
 
+			case 'Completed':
+				return {
+					tab: '3',
+					title: 'Completed',
+				};
+			case 'Cancelled':
+				return {
+					tab: '4',
+					title: 'Cancelled',
+				};
+			case 'Refunded':
+				return {
+					tab: '5',
+					title: 'Refunded',
+				};
 			default:
 				return state;
 		}
 	};
-
+	let initialState = {
+		tab: '1',
+		title: 'All Bookings',
+	};
 	const [state, dispatch] = useReducer(reducer, initialState);
-	const [tab, settab] = useState(false);
+
 	const handTab = (payload: string) => {
 		dispatch({
 			type: payload,
@@ -592,11 +613,46 @@ export default function Transaction() {
 
 				<Container>
 					<Nav>
-						<NavItem className='review-active'>All Bookings (216)</NavItem>
-						<NavItem>Pending</NavItem>
-						<NavItem>Completed</NavItem>
-						<NavItem>Cancelled</NavItem>
-						<NavItem>Refunded</NavItem>
+						<NavItem
+							className={state.tab === '1' ? 'review-active' : undefined}
+							onClick={() => {
+								handTab('All Bookings');
+							}}
+						>
+							All Bookings (216)
+						</NavItem>
+						<NavItem
+							className={state.tab === '2' ? 'review-active' : undefined}
+							onClick={() => {
+								handTab('Pending');
+							}}
+						>
+							Pending
+						</NavItem>
+						<NavItem
+							className={state.tab === '3' ? 'review-active' : undefined}
+							onClick={() => {
+								handTab('Completed');
+							}}
+						>
+							Completed
+						</NavItem>
+						<NavItem
+							className={state.tab === '4' ? 'review-active' : undefined}
+							onClick={() => {
+								handTab('Cancelled');
+							}}
+						>
+							Cancelled
+						</NavItem>
+						<NavItem
+							className={state.tab === '5' ? 'review-active' : undefined}
+							onClick={() => {
+								handTab('Refunded');
+							}}
+						>
+							Refunded
+						</NavItem>
 					</Nav>
 
 					<CustomeInputContainer>
@@ -609,7 +665,7 @@ export default function Transaction() {
 			</Grid>
 
 			<PiginationButton align='flex-end' />
-			<ModalContainer>
+			{/* <ModalContainer>
 				<DetailContainer>
 					<ModalTitleContainer>
 						<div>
@@ -690,7 +746,7 @@ export default function Transaction() {
 						</TelButton>
 					</ModalCustomerContainer>
 				</DetailContainer>
-			</ModalContainer>
+			</ModalContainer> */}
 		</DashboardContainer>
 	);
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import { useReducer } from 'react';
 import styled from 'styled-components';
 
 import DashboardContainer from '../Dashboard/DashboardContainer/DashboardContainer';
@@ -86,6 +86,7 @@ const HeaderListItem = styled.li`
 	font-style: normal;
 	font-weight: 500;
 	font-size: 1.13rem;
+	cursor: pointer;
 	height: 100%;
 	color: rgba(0, 0, 0, 0.3);
 	@media (max-width: 640px) {
@@ -140,6 +141,42 @@ const Table = styled.div`
 `;
 
 export default function Review() {
+	const reducer = (
+		state: { tab: string; title: string },
+		action: { type: string }
+	) => {
+		switch (action.type) {
+			case 'All Reviews':
+				return {
+					tab: '1',
+					title: 'All Reviews',
+				};
+			case 'Published':
+				return {
+					tab: '2',
+					title: 'Published',
+				};
+
+			case 'Deleted':
+				return {
+					tab: '3',
+					title: 'Deleted',
+				};
+
+			default:
+				return state;
+		}
+	};
+	let initialState = {
+		tab: '1',
+		title: 'All Reviews',
+	};
+	const [state, dispatchstore] = useReducer(reducer, initialState);
+	const handTab = (payload: string) => {
+		dispatchstore({
+			type: payload,
+		});
+	};
 	return (
 		<DashboardContainer>
 			<Grid>
@@ -149,11 +186,30 @@ export default function Review() {
 					<Header>
 						<HeaderList>
 							<HeaderListContainer>
-								<HeaderListItem className='review-active'>
+								<HeaderListItem
+									className={state.tab === '1' ? 'review-active' : undefined}
+									onClick={() => {
+										handTab('All Reviews');
+									}}
+								>
 									All Reviews
 								</HeaderListItem>
-								<HeaderListItem>Published</HeaderListItem>
-								<HeaderListItem>Deleted</HeaderListItem>
+								<HeaderListItem
+									className={state.tab === '2' ? 'review-active' : undefined}
+									onClick={() => {
+										handTab('Published');
+									}}
+								>
+									Published
+								</HeaderListItem>
+								<HeaderListItem
+									className={state.tab === '3' ? 'review-active' : undefined}
+									onClick={() => {
+										handTab('Deleted');
+									}}
+								>
+									Deleted
+								</HeaderListItem>
 							</HeaderListContainer>
 						</HeaderList>
 
