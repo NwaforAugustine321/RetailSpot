@@ -16,7 +16,7 @@ const Grid = styled.div`
 	}
 `;
 const Table = styled.div`
-	min-height: 800px;
+	min-height: max-content;
 	background: var(--bg-color);
 	border-radius: 22px;
 	padding: 2rem 1rem;

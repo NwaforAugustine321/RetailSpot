@@ -8,7 +8,7 @@ import { ReactComponent as UnApprovedIcon } from '../../../assets/unapproved.svg
 import { ReactComponent as InfoIcon } from '../../../assets/info.svg';
 
 const Table = styled.div`
-	min-height: 800px;
+	min-height: max-content;
 	background: var(--bg-color);
 	border-radius: 22px;
 `;

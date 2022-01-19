@@ -13,20 +13,23 @@ const Slider = (props: any) => {
 		position: relative;
 		height: 200px;
 		margin: 0 auto;
+		@media (max-width: 1000px) {
+			display: none;
+		}
 	`;
 
 	const { slides } = props;
 
 	const FirstSlide = slides[0];
-	const SecondSlide = slides[1];
-	const LastSlide = slides[slides.length - 1];
+	// const SecondSlide = slides[1];
+	// const LastSlide = slides[slides.length - 1];
 
 	const [state, setState] = useState({
 		activeSlide: 0,
-		translate: getWidth(),
+		translate: 0,
 		transition: 0.45,
 		transitioning: false,
-		_slides: [LastSlide, FirstSlide, SecondSlide],
+		_slides: [FirstSlide],
 	});
 
 	const { activeSlide, translate, _slides, transition, transitioning } = state;
@@ -58,7 +61,6 @@ const Slider = (props: any) => {
 		};
 
 		const throttle = (e: any) => {
-			console.log('ok');
 			if (e.target.className.includes('SliderContent')) {
 				throttleRef.current();
 			}
@@ -113,7 +115,7 @@ const Slider = (props: any) => {
 		if (transitioning) return;
 		setState({
 			...state,
-			translate: getWidth() * activeSlide,
+			translate: 300,
 			activeSlide:
 				state.activeSlide === slides.length - 1 ? 0 : activeSlide + 1,
 		});
@@ -130,15 +132,14 @@ const Slider = (props: any) => {
 	};
 
 	const smoothTransition = () => {
-		let _slides = [];
+		let _slides = [FirstSlide];
 
-		// We're at the last slide.
-		if (activeSlide === slides.length - 1)
-			_slides = [slides[slides.length - 2], LastSlide, FirstSlide];
-		// We're back at the first slide. Just reset to how it was on initial render
-		else if (activeSlide === 0) _slides = [LastSlide, FirstSlide, SecondSlide];
-		// Create an array of the previous last slide, and the next two slides that follow it.
-		else _slides = slides.slice(activeSlide - 1, activeSlide + 2);
+		// // We're at the last slide.
+		// if (activeSlide === slides.length - 1) _slides = [FirstSlide];
+		// // We're back at the first slide. Just reset to how it was on initial render
+		// else if (activeSlide === 0) _slides = [FirstSlide];
+		// // Create an array of the previous last slide, and the next two slides that follow it.
+		// else _slides = slides.slice(activeSlide - 1, activeSlide + 2);
 
 		setState({
 			...state,
@@ -153,7 +154,7 @@ const Slider = (props: any) => {
 			<SliderContent
 				translate={translate}
 				transition={transition}
-				width={getWidth() * 3}
+				width={getWidth()}
 			>
 				{_slides.map((_slide, i) => {
 					let Content = _slide;

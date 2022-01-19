@@ -37,7 +37,7 @@ const Grid = styled.div`
 	width: 100%;
 	gap: 1rem;
 	justify-content: space-between;
-	@media (max-width: 1024px) {
+	@media (max-width: 1000px) {
 		display: none;
 	}
 `;
@@ -127,5 +127,5 @@ export default function Features() {
 		);
 	};
 
-	return <Slider slides={[MapToSlide, MapToSlide, MapToSlide]} />;
+	return <Slider slides={[MapToSlide]} />;
 }
